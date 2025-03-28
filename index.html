@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang='zh-CN'>
 <head>
 	<meta charset='UTF-8'>
-	<title>La testa pagxo</title>
+	<title>綜合捜尋</title>
 	<link rel='icon' href='ico/sps.ico'>
 	<link rel='stylesheet' href='komuna.css'>
-	<script src='komuna.js'></script>
+	<script charset='UTF-8' src='js/komuna.js'></script>
 </head>
 <body>
 
-<p>Bonan tagon</p>
-
-<img src='google-chrome-icon.jfif'>
-
+<input type='search' id='eniro' autofocus>
+<input type='button' id='sendi' value='捜尋'>
+<br>
+<a class='butono' href='sercx_list.html'>捜尋指南</a>／
+<a class='butono' href='ejmapo.html'>本址地圖</a>
+	
+<script charset='UTF-8' src='js/sercxo.js'></script>
+<script>
+let eniro=ById('eniro');
+eniro.addEventListener('keydown',function(e){if(e.keyCode==13){//Enter
+	sercx(eniro.value,1);
+}},false);
+ById('sendi').addEventListener('click',function(){
+	sercx(eniro.value,1);
+},false);
+</script>
 </body>
 </html>
