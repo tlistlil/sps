@@ -7,8 +7,10 @@
 body,textarea{background:#000;color:var(--blk);}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
+a.butono{text-decoration:none;}
 input,.butono{
-  background:var(--UIRugx);
+  background:var(--UIRugx);color:var(--blk);
+  height:25px;
   border:outset 3px var(--UIRugxLim);border-radius:8px;
 }
 input[type='search']{
