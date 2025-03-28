@@ -1,2 +1,21 @@
 @charset "UTF-8";
 body{background:#000;color:hsl(0,0%,85%);}
+a:link{color:hsl(60,100%,50%);}
+a:visited{color:hsl(30,100%,50%);}
+input,.butono{
+  border:outset 3px;border-radius:8px;
+}
+input[type='search']{
+  padding:1px 4px;
+  font:200 16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
+}
+input[type='button'],.butono{
+  padding-block:1px;padding-inline:6px;
+}
+/*言語*/
+@font-face{
+  font-family:'KoPubWorld Batang Pro';
+  src:url('tiparoj/CJK/KoPubWorld Batang_Pro Medium.woff2') format('woff2');
+  font-display:'swap';
+}
+.Kore,  .ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
