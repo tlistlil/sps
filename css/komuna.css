@@ -4,10 +4,14 @@
   --UIRugx:   hsl(320,100%,50%);
   --UIRugxLim:hsl(325,100%,50%);
 }
-body,textarea{background:#000;color:var(--blk);}
+*{box-sizing:border-box;}
+::webkit-scrollbar{width:8px;height:8px;}
+::webkit-scrollbar-corner{display:none;}
+::webkit-scrollbar-thumb{background:hsl(120,90%,15%);border-radius:3px;}
+body,textarea{background:#000;color:var(--blk);font-size:16px;}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
-a.butono{text-decoration:none;}
+a.butono{color:var(--blk);text-decoration:none;}
 input,.butono{
   background:var(--UIRugx);color:var(--blk);
   height:25px;
