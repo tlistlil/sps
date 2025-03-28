@@ -13,7 +13,9 @@ body{font:16px/1.8 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SI
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
 a.butono{color:#fff;text-decoration:none;}
-input,.butono{
+input[type='search'],
+input[type='button'],
+.butono{
   background:var(--UIRugx);color:#fff;
   height:32px;
   border:outset 3px var(--UIRugxLim);border-radius:8px;
