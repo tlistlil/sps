@@ -8,7 +8,8 @@
 ::webkit-scrollbar{width:8px;height:8px;}
 ::webkit-scrollbar-corner{display:none;}
 ::webkit-scrollbar-thumb{background:hsl(120,90%,15%);border-radius:3px;}
-body,textarea{background:#000;color:var(--blk);font-size:16px;font-family:serif;}
+body,textarea{background:#000;color:var(--blk);}
+body{font:16px/1.8 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic','Noto Serif CJK JP','KoPubWorld Batang Pro',serif;}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
 a.butono{color:#fff;text-decoration:none;}
