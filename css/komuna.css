@@ -29,6 +29,7 @@ input[type='button'],.butono{
   font:16px/1 '教育部標準宋體',serif;
 }
 .margxeno{width:100%;height:5em;}
+li>p{margin:0;}
 /*言語*/
 @font-face{
   font-family:'KoPubWorld Batang Pro';
