@@ -1,12 +1,643 @@
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
+	<meta charset='utf-8'>
+	<meta name='theme-color'	content='#000'>
+  <meta name='description' content='keyboard for Old Hangul,古ハングル入力支援ツール,клавиатура для древнекорейского языка'>
   <title>옛한글 자판</title>
   <link rel='icon' href='../ico/Kore.ico'>
   <link rel='stylesheet' href='../css/komuna.css'>
   <script charset='UTF-8' src='../js/komuna.js'></script>
+  <style>
+	#montri{height:45vh;width:95vw;max-width:600px;
+		font-size:2em;line-height:1.5;}
+	#klavaro {
+		height:30vh;max-height:500px;width:100%;max-width:600px;
+		position:fixed;bottom:50px;
+		z-index:1;
+		margin-right:10px;
+		table-layout:fixed;
+		border-collapse:separate;border-spacing:4px;
+		background:hsl(0,0%,60%);
+	}
+	td{background:hsl(180,100%,10%);text-align:center;cursor:pointer;}
+	td.hejma{background:hsl(30,100%,10%);}
+	td.tajpinta{background:hsl(40,100%,50%);}
+	#montri,#klavaro{font-family:'Gentium Plus','KoPubWorld Batang','IPAex明朝',serif;}
+	</style>
 </head>
 <body class='Kore'>
-<p>공사중</p>
+
+<textarea id=montri autofocus></textarea>
+<nav>
+	<input type='checkbox' id='kunmeti' checked>
+	<label for='kunmeti'>完成型를 使用함</label> ／
+	<a href='kl_not.html'>指南</a>
+</nav>
+
+<table id="klavaro" border="1">
+	<tr><td></td><td colspan=2 id='kl1'></td><td colspan=2 id='kl2'></td><td colspan=2 id='kl3'></td><td colspan=2 id='kl4'></td><td colspan=2 id='kl5'></td><td colspan=2 id='kl6'></td><td colspan=2 id='kl7'></td><td colspan=2 id='kl8'></td><td colspan=2 id='kl9'></td><td colspan=2 id='kl10'></td><td colspan=2 id='kl11'></td><td colspan=2 id='kl12'></td><td colspan=2 id='kl13'></td></tr>
+	<tr><td colspan="2" id="kl0"></td><td colspan=2 id='kl14'></td><td colspan=2 id='kl15'></td><td colspan=2 id='kl16'></td><td colspan=2 id='kl17'></td><td colspan=2 id='kl18'></td><td colspan=2 id='kl19'></td><td colspan=2 id='kl20'></td><td colspan=2 id='kl21'></td><td colspan=2 id='kl22'></td><td colspan=2 id='kl23'></td><td colspan=2 id='kl24'></td><td colspan=2 id='kl25'></td><td></td></tr>
+	<tr><td colspan="3" id="seruro">🔒</td><td colspan=2 id='kl26'></td><td colspan=2 id='kl27'></td><td colspan=2 id='kl28'></td><td colspan=2 id='kl29'></td><td colspan=2 id='kl30'></td><td colspan=2 id='kl31'></td><td colspan=2 id='kl32'></td><td colspan=2 id='kl33'></td><td colspan=2 id='kl34'></td><td colspan=2 id='kl35'></td><td colspan=2 id='kl36'></td><td colspan=2 id='kl37'></td></tr>
+	<tr><td colspan="4" id="sup">⇑</td><td colspan=2 id='kl38'></td><td colspan=2 id='kl39'></td><td colspan=2 id='kl40'></td><td colspan=2 id='kl41'></td><td colspan=2 id='kl42'></td><td colspan=2 id='kl43'></td><td colspan=2 id='kl44'></td><td colspan=2 id='kl45'></td><td colspan=2 id='kl46'></td><td colspan=2 id='kl47'></td><td colspan=2 id='kl48'></td><td></td></tr>
+	<tr><td colspan="5" id="AltGr">AltGr</td><td colspan="8" id="spaco">␣</td><td colspan="2" id="h">←</td><td colspan="2" id="j">↓</td><td colspan="2" id="k">↑</td><td colspan="2" id="l">→</td><td colspan="3" id="x">BS</td><td colspan="3" id="o">↲</td></tr>
+</table>
+
+<script>
+//變數（全體）
+let cxiSup=cxiAltGr=cxiSer=0; //sup,AltGr,spaco時使用
+let klavoj=malsup="\u302e1234567890-=ーᄇᄌᄃᄀ쇼ᅧᅣᅢᅦ[]ᄆᄂᄋᄅ호ᅥᅡᅵ〮'\ ᄏᄐᄎ퓨ᅮᅳ,./ ";
+let sup = "~!@#$%^&*()_+ ᄈᄍᄄᄁ쑈ᅧᅣᅤᅨ{}ᅀᄂᅌᄅᅙᅩᅥᆞᅵ〯\"|ᄼᄾᅎᅐᅔᅕᅳ<>? ";
+let AltGr = klavoj;
+let supAltGr = sup;
+let kodo = ["Backquote","Digit1","Digit2","Digit3","Digit4","Digit5","Digit6","Digit7","Digit8","Digit9","Digit0","Minus","Equal","IntlYen","KeyQ","KeyW","KeyE","KeyR","KeyT","KeyY","KeyU","KeyI","KeyO","KeyP","BracketLeft","BracketRight","KeyA","KeyS","KeyD","KeyF","KeyG","KeyH","KeyJ","KeyK","KeyL","Semicolon","Quote","Backslash","KeyZ","KeyX","KeyC","KeyV","KeyB","KeyN","KeyM","Comma","Period","Slash","IntlRo"]; //物理鍵盤のe.code檢索用
+const klavaro = ById("klavaro");
+const montri=ById('montri');
+//變數（全體）ここまで
+
+//文字入力イベント
+//物理鍵盤から
+document.addEventListener("keydown", function(e){
+	//機能鍵處理
+	if(e.ctrlKey && e.key!='Shift')return;
+	if(e.key=='Shift'){supre();return;}
+	if(e.key=='Process')return;//和文入力中はオフ
+	switch(e.code){
+		case'AltRight':	AltGre(); return;
+		case'Space':	spaco(); return;
+		case'AltLeft':
+		case'CapsLock':
+		case'ArrowLeft':case'ArrowDown':case'ArrowUp':case'ArrowRight':
+		case'Backspace':case'Delete':case'End':
+		case'Enter':
+		case'Escape':
+		case'F1':case'F2':case'F3':case'F4': case'F5': case'F6':
+		case'F7':case'F8':case'F9':case'F10':case'F11':case'F12':
+		case'Home':
+		case'KanaMode':
+		case'MetaLeft':
+		case'PageDown':case'PageUp':
+		case'Tab':
+		case'WakeUp':return;
+		default:break;
+	}
+	let k = Object.keys(kodo).filter(function(k) {return kodo[k] == e.code})[0];
+	eniri(k);	//入力
+	//montriフォーカス時の系統からの二重入力除去
+	if(document.activeElement.id=="montri") dedouble();
+}, false);
+//物理鍵盤のShift,AltGr解除
+document.addEventListener("keyup", function(e){
+	if(e.key=="Shift"){malsupre();return;}
+	if(e.code=="AltRight"){AltGre();return;}
+}, false);
+//假想鍵盤から
+klavaro.addEventListener("click", function(e){
+	let k = e.target.id; //押した鍵のID取得
+	//機能鍵處理
+	switch(k){
+		case"sup":	supre_malsupre();return;
+		case"AltGr":AltGre();return;
+		case"spaco":spaco();return;
+		case"seruro":case"h":case"j":case"k":case"l":case"x":case"o":return;
+		default:break;
+	}
+	eniri(k.substr(2));//IDから數字を切出し入力
+	if(!cxiSer){
+		klavo=malsup;cxiSup=cxiAltGr=0;
+		klavaronSxangxi(klavo);
+	}
+}, false);
+//他のタブに移った時Shiftを解除
+document.addEventListener('visibilitychange',()=>{
+	if(document.visibilityState==='hidden')malsupre();
+});
+window.addEventListener('blur',()=>{malsupre();});
+
+//文字入力函數
+let eniri=(k)=>{
+	if(isNaN(k))return; //未定義、文字列等をtrueで排除
+	let klk=ById("kl"+k);
+	klk.classList.add('tajpinta');//變色表示
+	//配列か單字列かを判別して輸入文字を指定
+	let novkar=typeof(klavoj)=='string'?klavoj.charAt(k):klavoj[k];
+	let montri=ById("montri");
+	let pre=montri.value;let pos=montri.selectionStart;
+	let prepre=pre.substr(0,pos);//カーソルより前の部分
+	let antaw=prepre.substr(pos-1,1);//直前の文字
+	let prepost=pre.substr(pos);//カーソルより後の部分
+	let cxiKunmeti=ById('kunmeti').checked;
+	if(antaw=="\u200c"){//音節頭なので入力字を單純追加
+		//音節の入力が終はったので單字變換
+		if(ById('kunmeti').checked)prepre=kunmeti(prepre);
+		prepre=prepre.replace(/\u200c/g,'');//不要になった零幅非結合子を削除
+		novkar=V_V(novkar,1)//母音字は互換用字母に變換
+		pos=prepre.length;
+	}else{
+		let antaw_novkar=kombini(antaw,novkar);//合成字母かどうかを判定
+		if(antaw_novkar){//直前の文字を合成後の字に置換
+			prepre=prepre.substr(0,pos-1);
+			novkar=antaw_novkar;
+			pos--;
+		}
+	}
+	//if(prepost)prepost="\u200c"+prepost;
+	pos+=novkar.length;
+	montri.value=prepre+novkar+prepost;
+	montri.setSelectionRange(pos,pos);//カーソル位置變更
+	setTimeout(function(){klk.classList.remove('tajpinta');},150);//變色時間長
+}//function eniri 終
+let kombini=(antaw='',novkar='')=>{//直前文字と入力文字から合成字母+αを返す
+	if(!antaw)return V_V(novkar);//先頭 入力が韻母なら互換用字母に變換、それ以外はfalse
+	antKod=antaw.codePointAt(0);
+	novKod=novkar.codePointAt(0);
+	if(0x1160<antKod&&antKod<0x11a8){//1 直前が韻母
+		if(0x10ff<novKod&&novKod<0x1113){//11 入力が聲母
+			//入力を終聲字に變更
+			switch(novkar){
+				case"ᄀ":return antaw+"ᆨ";
+				case"ᄁ":return antaw+"ᆩ";
+				case"ᄂ":return antaw+"ᆫ";
+				case"ᄃ":return antaw+"ᆮ";
+				case"ᄅ":return antaw+"ᆯ";
+				case"ᄆ":return antaw+"ᆷ";
+				case"ᄇ":return antaw+"ᆸ";
+				case"ᄉ":return antaw+"ᆺ";
+				case"ᄊ":return antaw+"ᆻ";
+				case"ᄋ":return antaw+"ᆼ";
+				case"ᄌ":return antaw+"ᆽ";
+				case"ᄎ":return antaw+"ᆾ";
+				case"ᄏ":return antaw+"ᆿ";
+				case"ᄐ":return antaw+"ᇀ";
+				case"ᄑ":return antaw+"ᇁ";
+				case"ᄒ":return antaw+"ᇂ";
+				case"ᅀ":return antaw+"ᇫ";
+				case"ᅌ":return antaw+"ᇰ";
+				case"ᅙ":return antaw+"ᇹ";
+				default:return false;
+			}
+		}
+		if(0x1160<novKod&&novKod<0x11a8){//12 直前・入力とも韻母
+			//合成韻母：完成
+			if(antaw=="ᅩ"&&novkar=="ᅡ")return "ᅪ";
+			if(antaw=="ᅩ"&&novkar=="ᅢ")return "ᅫ";
+			if(antaw=="ᅩ"&&novkar=="ᅢ")return "ᅫ";
+			if(antaw=="ᅩ"&&novkar=="ᅵ")return "ᅬ";
+			if(antaw=="ᅮ"&&novkar=="ᅥ")return "ᅯ";
+			if(antaw=="ᅮ"&&novkar=="ᅦ")return "ᅰ";
+			if(antaw=="ᅮ"&&novkar=="ᅵ")return "ᅱ";
+			if(antaw=="ᅳ"&&novkar=="ᅵ")return "ᅴ";
+			if(antaw=="ᅡ"&&novkar=="ᅩ")return "ᅶ";
+			if(antaw=="ᅡ"&&novkar=="ᅮ")return "ᅷ";
+			if(antaw=="ᅣ"&&novkar=="ᅩ")return "ᅸ";
+			if(antaw=="ᅣ"&&novkar=="ᅭ")return "ᅹ";
+			if(antaw=="ᅥ"&&novkar=="ᅩ")return "ᅺ";
+			if(antaw=="ᅥ"&&novkar=="ᅮ")return "ᅻ";
+			if(antaw=="ᅥ"&&novkar=="ᅳ")return "ᅼ";
+			if(antaw=="ᅧ"&&novkar=="ᅩ")return "ᅽ";
+			if(antaw=="ᅧ"&&novkar=="ᅮ")return "ᅾ";
+			if(antaw=="ᅩ"&&novkar=="ᅥ")return "ᅿ";
+			if(antaw=="ᅩ"&&novkar=="ᅦ")return "ᆀ";
+			if(antaw=="ᅩ"&&novkar=="ᅨ")return "ᆁ";
+			if(antaw=="ᅩ"&&novkar=="ᅩ")return "ᆂ";
+			if(antaw=="ᅩ"&&novkar=="ᅮ")return "ᆃ";
+			if(antaw=="ᅭ"&&novkar=="ᅣ")return "ᆄ";
+			if(antaw=="ᅭ"&&novkar=="ᅤ")return "ᆅ";
+			if(antaw=="ᅭ"&&novkar=="ᅧ")return "ᆆ";
+			if(antaw=="ᅭ"&&novkar=="ᅩ")return "ᆇ";
+			if(antaw=="ᅭ"&&novkar=="ᅵ")return "ᆈ";
+			if(antaw=="ᅮ"&&novkar=="ᅡ")return "ᆉ";
+			if(antaw=="ᅮ"&&novkar=="ᅢ")return "ᆊ";
+			if(antaw=="ᅯ"&&novkar=="ᅳ")return "ᆋ";
+			if(antaw=="ᅮ"&&novkar=="ᅨ")return "ᆌ";
+			if(antaw=="ᅮ"&&novkar=="ᅮ")return "ᆍ";
+			if(antaw=="ᅲ"&&novkar=="ᅡ")return "ᆎ";
+			if(antaw=="ᅲ"&&novkar=="ᅥ")return "ᆏ";
+			if(antaw=="ᅲ"&&novkar=="ᅦ")return "ᆐ";
+			if(antaw=="ᅲ"&&novkar=="ᅥ")return "ᆑ";
+			if(antaw=="ᅲ"&&novkar=="ᅨ")return "ᆒ";
+			if(antaw=="ᅲ"&&novkar=="ᅮ")return "ᆓ";
+			if(antaw=="ᅲ"&&novkar=="ᅵ")return "ᆔ";
+			if(antaw=="ᅳ"&&novkar=="ᅮ")return "ᆕ";
+			if(antaw=="ᅳ"&&novkar=="ᅳ")return "ᆖ";
+			if(antaw=="ᅴ"&&novkar=="ᅮ")return "ᆗ";
+			if(antaw=="ᅵ"&&novkar=="ᅡ")return "ᆘ";
+			if(antaw=="ᅵ"&&novkar=="ᅣ")return "ᆙ";
+			if(antaw=="ᅵ"&&novkar=="ᅩ")return "ᆚ";
+			if(antaw=="ᅵ"&&novkar=="ᅮ")return "ᆛ";
+			if(antaw=="ᅵ"&&novkar=="ᅳ")return "ᆜ";
+			if(antaw=="ᅵ"&&novkar=="ᆞ")return "ᆝ";
+			if(antaw=="ᆞ"&&novkar=="ᅥ")return "ᆟ";
+			if(antaw=="ᆞ"&&novkar=="ᅮ")return "ᆠ";
+			if(antaw=="ᆞ"&&novkar=="ᅵ")return "ᆡ";
+			if(antaw=="ᆞ"&&novkar=="ᆞ")return "ᆢ";
+			if(antaw=="ᅡ"&&novkar=="ᅳ")return "ᆣ";
+			if(antaw=="ᅣ"&&novkar=="ᅮ")return "ᆤ";
+			if(antaw=="ᅧ"&&novkar=="ᅣ")return "ᆥ";
+			if(antaw=="ᅩ"&&novkar=="ᅣ")return "ᆦ";
+			if(antaw=="ᅩ"&&novkar=="ᅤ")return "ᆧ";
+			//入力韻母を互換用字母に變換
+			return antaw+V_V(novkar);
+		}
+	}//直前が韻母の場合終はり
+	if(0x314e<antKod&&antKod<0x318f){//2 直前が互換用字母
+		if(0x1160<novKod&&novKod<0x11a8){//入力が韻母
+			//合成韻母（互換用）
+			if(antaw=="ㅗ"&&novkar=="ᅡ")return "ㅘ";
+			if(antaw=="ㅗ"&&novkar=="ᅢ")return "ㅙ";
+			if(antaw=="ㅗ"&&novkar=="ᅵ")return "ㅚ";
+			if(antaw=="ㅜ"&&novkar=="ᅥ")return "ㅝ";
+			if(antaw=="ㅜ"&&novkar=="ᅦ")return "ㅞ";
+			if(antaw=="ㅜ"&&novkar=="ᅵ")return "ㅟ";
+			if(antaw=="ㅡ"&&novkar=="ᅵ")return "ㅢ";
+			if(antaw=="ㅛ"&&novkar=="ᅣ")return "ㆇ";
+			if(antaw=="ㅛ"&&novkar=="ᅤ")return "ㆈ";
+			if(antaw=="ㅛ"&&novkar=="ᅵ")return "ㆉ";
+			if(antaw=="ㅠ"&&novkar=="ᅧ")return "ㆊ";
+			if(antaw=="ㅠ"&&novkar=="ᅨ")return "ㆋ";
+			if(antaw=="ㅠ"&&novkar=="ᅵ")return "ㆌ";
+			if(antaw=="ㆍ"&&novkar=="ᅵ")return "ㆎ";
+			//入力韻母を互換用字母に變換
+			return antaw+V_V(novkar);
+		}
+	}
+	if(0x11a7<antKod&&antKod<0x1200){//3 直前が終聲
+		if(0x1160<novKod&&novKod<0x11a8){//入力が韻母
+			//直前字を初聲に戻す：さしあたり單音のみ
+			switch(antaw){
+				case"ᆨ":return "ᄀ"+novkar;
+				case"ᆩ":return "ᄁ"+novkar;
+				case"ᆫ":return "ᄂ"+novkar;
+				case"ᆮ":return "ᄃ"+novkar;
+				case"ᆯ":return "ᄅ"+novkar;
+				case"ᆷ":return "ᄆ"+novkar;
+				case"ᆸ":return "ᄇ"+novkar;
+				case"ᆺ":return "ᄉ"+novkar;
+				case"ᆻ":return "ᄊ"+novkar;
+				case"ᆼ":return "ᄋ"+novkar;
+				case"ᆽ":return "ᄌ"+novkar;
+				case"ᆾ":return "ᄎ"+novkar;
+				case"ᆿ":return "ᄏ"+novkar;
+				case"ᇀ":return "ᄐ"+novkar;
+				case"ᇁ":return "ᄑ"+novkar;
+				case"ᇂ":return "ᄒ"+novkar;
+				case"ᇫ":return "ᅀ"+novkar;
+				case"ᇰ":return "ᅌ"+novkar;
+				case"ᇹ":return "ᅙ"+novkar;
+				//入力韻母を互換用字母に變換
+				default:return antaw+V_V(novkar);
+			}
+		}
+	}
+	if(0x10ff<antKod&&antKod<0x1113){//4 直前が聲母
+		if(0x1160<novKod&&novKod<0x11a8)return false;//41 入力が韻母
+		if(0x10ff<novKod&&novKod<0x1113){//42 直前・入力とも聲母 初聲を合成
+			if(antaw=="ᄂ"&&novkar=="ᄀ")return "ᄓ";
+			if(antaw=="ᄂ"&&novkar=="ᄂ")return "ᄔ";
+			if(antaw=="ᄂ"&&novkar=="ᄃ")return "ᄕ";
+			if(antaw=="ᄂ"&&novkar=="ᄇ")return "ᄖ";
+			if(antaw=="ᄃ"&&novkar=="ᄀ")return "ᄗ";
+			if(antaw=="ᄅ"&&novkar=="ᄂ")return "ᄘ";
+			if(antaw=="ᄅ"&&novkar=="ᄅ")return "ᄙ";
+			if(antaw=="ᄅ"&&novkar=="ᄒ")return "ᄚ";
+			if(antaw=="ᄅ"&&novkar=="ᄋ")return "ᄛ";
+			if(antaw=="ᄆ"&&novkar=="ᄇ")return "ᄜ";
+			if(antaw=="ᄆ"&&novkar=="ᄋ")return "ᄝ";
+			if(antaw=="ᄇ"&&novkar=="ᄀ")return "ᄞ";
+			if(antaw=="ᄇ"&&novkar=="ᄂ")return "ᄟ";
+			if(antaw=="ᄇ"&&novkar=="ᄃ")return "ᄠ";
+			if(antaw=="ᄇ"&&novkar=="ᄉ")return "ᄡ";
+			if(antaw=="ᄡ"&&novkar=="ᄀ")return "ᄢ";
+			if(antaw=="ᄡ"&&novkar=="ᄃ")return "ᄣ";
+			if(antaw=="ᄡ"&&novkar=="ᄇ")return "ᄤ";
+			if(antaw=="ᄇ"&&novkar=="ᄊ")return "ᄥ";
+			if(antaw=="ᄡ"&&novkar=="ᄉ")return "ᄥ";
+			if(antaw=="ᄡ"&&novkar=="ᄌ")return "ᄦ";
+			if(antaw=="ᄇ"&&novkar=="ᄌ")return "ᄧ";
+			if(antaw=="ᄇ"&&novkar=="ᄎ")return "ᄨ";
+			if(antaw=="ᄇ"&&novkar=="ᄐ")return "ᄩ";
+			if(antaw=="ᄇ"&&novkar=="ᄑ")return "ᄪ";
+			if(antaw=="ᄇ"&&novkar=="ᄋ")return "ᄫ";
+			if(antaw=="ᄈ"&&novkar=="ᄋ")return "ᄬ";
+			if(antaw=="ᄉ"&&novkar=="ᄀ")return "ᄭ";
+			if(antaw=="ᄉ"&&novkar=="ᄂ")return "ᄮ";
+			if(antaw=="ᄉ"&&novkar=="ᄃ")return "ᄯ";
+			if(antaw=="ᄉ"&&novkar=="ᄅ")return "ᄰ";
+			if(antaw=="ᄉ"&&novkar=="ᄆ")return "ᄱ";
+			if(antaw=="ᄉ"&&novkar=="ᄇ")return "ᄲ";
+			if(antaw=="ᄲ"&&novkar=="ᄀ")return "ᄳ";
+			if(antaw=="ᄉ"&&novkar=="ᄊ")return "ᄴ";
+			if(antaw=="ᄊ"&&novkar=="ᄉ")return "ᄴ";
+			if(antaw=="ᄉ"&&novkar=="ᄋ")return "ᄵ";
+			if(antaw=="ᄉ"&&novkar=="ᄌ")return "ᄶ";
+			if(antaw=="ᄉ"&&novkar=="ᄎ")return "ᄷ";
+			if(antaw=="ᄉ"&&novkar=="ᄏ")return "ᄸ";
+			if(antaw=="ᄉ"&&novkar=="ᄐ")return "ᄹ";
+			if(antaw=="ᄉ"&&novkar=="ᄑ")return "ᄺ";
+			if(antaw=="ᄉ"&&novkar=="ᄒ")return "ᄻ";
+			if(antaw=="ᄼ"&&novkar=="ᄼ")return "ᄽ";
+			if(antaw=="ᄾ"&&novkar=="ᄾ")return "ᄿ";
+			if(antaw=="ᄋ"&&novkar=="ᄀ")return "ᅁ";
+			if(antaw=="ᄋ"&&novkar=="ᄃ")return "ᅂ";
+			if(antaw=="ᄋ"&&novkar=="ᄆ")return "ᅃ";
+			if(antaw=="ᄋ"&&novkar=="ᄇ")return "ᅄ";
+			if(antaw=="ᄋ"&&novkar=="ᄉ")return "ᅅ";
+			if(antaw=="ᄋ"&&novkar=="ᅀ")return "ᅆ";
+			if(antaw=="ᄋ"&&novkar=="ᄋ")return "ᅇ";
+			if(antaw=="ᄋ"&&novkar=="ᄌ")return "ᅈ";
+			if(antaw=="ᄋ"&&novkar=="ᄎ")return "ᅉ";
+			if(antaw=="ᄋ"&&novkar=="ᄐ")return "ᅊ";
+			if(antaw=="ᄋ"&&novkar=="ᄑ")return "ᅋ";
+			if(antaw=="ᄌ"&&novkar=="ᄋ")return "ᅍ";
+			if(antaw=="ᅎ"&&novkar=="ᅎ")return "ᅏ";
+			if(antaw=="ᅐ"&&novkar=="ᅐ")return "ᅑ";
+			if(antaw=="ᄎ"&&novkar=="ᄏ")return "ᅒ";
+			if(antaw=="ᄎ"&&novkar=="ᄒ")return "ᅓ";
+			if(antaw=="ᄑ"&&novkar=="ᄇ")return "ᅖ";
+			if(antaw=="ᄑ"&&novkar=="ᄋ")return "ᅗ";
+			if(antaw=="ᄒ"&&novkar=="ᄒ")return "ᅘ";
+			if(antaw=="ᄀ"&&novkar=="ᄃ")return "ᅚ";
+			if(antaw=="ᄂ"&&novkar=="ᄉ")return "ᅛ";
+			if(antaw=="ᄂ"&&novkar=="ᄌ")return "ᅜ";
+			if(antaw=="ᄂ"&&novkar=="ᄒ")return "ᅝ";
+			if(antaw=="ᄃ"&&novkar=="ᄅ")return "ᅞ";//初聲ここまで
+			//終聲にしかない組合を互換字母に直接變換
+			if(antaw=="ᄀ"&&novkar=="ᄉ")return "ㄳ";
+			if(antaw=="ᄅ"&&novkar=="ᄐ")return "ㄾ";
+			if(antaw=="ᄅ"&&novkar=="ᄀ")return "ㄺ";
+			if(antaw=="ᄅ"&&novkar=="ᄆ")return "ㄻ";
+			if(antaw=="ᄅ"&&novkar=="ᄇ")return "ㄼ";
+			if(antaw=="ᄅ"&&novkar=="ᄉ")return "ㄽ";
+			if(antaw=="ᄅ"&&novkar=="ᄑ")return "ㄿ";
+/*不作動*/		if(antaw=="ᄂ"&&novkar=="ᅀ")return "ㅨ";
+			if(antaw=="ᄅ"&&novkar=="ᄃ")return "ㅪ";
+/*不作動*/		if(antaw=="ᄅ"&&novkar=="ᅀ")return "ㅬ";
+/*不作動*/		if(antaw=="ᄅ"&&novkar=="ᅙ")return "ㅭ";
+			if(antaw=="ᄆ"&&novkar=="ᄉ")return "ㅯ";
+/*不作動*/		if(antaw=="ᄆ"&&novkar=="ᅀ")return "ㅰ";
+/*不作動*/		if(antaw=="ᅌ"&&novkar=="ᄉ")return "ㆂ";
+/*不作動*/		if(antaw=="ᅌ"&&novkar=="ᅀ")return "ㆃ";
+			if(antaw=="ᄃ"&&novkar=="ᄆ")return "ꥠ";
+			if(antaw=="ᄃ"&&novkar=="ᄇ")return "ꥡ";
+			if(antaw=="ᄃ"&&novkar=="ᄉ")return "ꥢ";
+			if(antaw=="ᄃ"&&novkar=="ᄌ")return "ꥣ";
+			if(antaw=="ᄅ"&&novkar=="ᄁ")return "ꥥ";
+			if(antaw=="ᄅ"&&novkar=="ᄃ")return "ꥦ";
+			if(antaw=="ᄅ"&&novkar=="ᄄ")return "ꥧ";
+			if(antaw=="ᄅ"&&novkar=="ᄈ")return "ꥪ";
+			if(antaw=="ᄅ"&&novkar=="ᄌ")return "ꥭ";
+			if(antaw=="ᄅ"&&novkar=="ᄏ")return "ꥮ";
+			if(antaw=="ᄆ"&&novkar=="ᄀ")return "ꥯ";
+			if(antaw=="ᄆ"&&novkar=="ᄃ")return "ꥰ";
+			if(antaw=="ᄆ"&&novkar=="ᄉ")return "ꥱ";
+			if(antaw=="ᄇ"&&novkar=="ᄏ")return "ꥳ";
+			if(antaw=="ᄇ"&&novkar=="ᄒ")return "ꥴ";
+			if(antaw=="ᄊ"&&novkar=="ᄇ")return "ꥵ";
+			if(antaw=="ᄋ"&&novkar=="ᄅ")return "ꥶ";
+			if(antaw=="ᄋ"&&novkar=="ᄒ")return "ꥷ";
+			if(antaw=="ᄍ"&&novkar=="ᄒ")return "ꥸ";
+			if(antaw=="ᄐ"&&novkar=="ᄐ")return "ꥹ";
+			if(antaw=="ᄑ"&&novkar=="ᄒ")return "ꥺ";
+			if(antaw=="ᄒ"&&novkar=="ᄉ")return "ꥻ";
+/*不作動*/		if(antaw=="ᅙ"&&novkar=="ᅙ")return "ꥼ";
+			return antaw+novkar;
+		}//直前・入力とも聲母ここまで
+	}
+	//5 互換用字母と初聲の合成
+	if(antaw=="ㄺ"&&novkar=="ᄉ")return "ㅩ";
+	if(antaw=="ㄼ"&&novkar=="ᄉ")return "ㅫ";
+	if(antaw=="ㄼ"&&novkar=="ᄋ")return "ꥫ";
+	if(antaw=="ᄡ"&&novkar=="ᄐ")return "ꥲ";
+	//6 終聲
+	if(antaw=="ᆨ"&&novkar=="ᄉ")return "ᆪ";
+	if(antaw=="ᆫ"&&novkar=="ᄌ")return "ᆬ";
+	if(antaw=="ᆫ"&&novkar=="ᄒ")return "ᆭ";
+	if(antaw=="ᆯ"&&novkar=="ᄀ")return "ᆰ";
+	if(antaw=="ᆯ"&&novkar=="ᄆ")return "ᆱ";
+	if(antaw=="ᆯ"&&novkar=="ᄇ")return "ᆲ";
+	if(antaw=="ᆯ"&&novkar=="ᄉ")return "ᆳ";
+	if(antaw=="ᆯ"&&novkar=="ᄐ")return "ᆴ";
+	if(antaw=="ᆯ"&&novkar=="ᄑ")return "ᆵ";
+	if(antaw=="ᆯ"&&novkar=="ᄒ")return "ᆶ";
+	if(antaw=="ᆸ"&&novkar=="ᄉ")return "ᆹ";
+	if(antaw=="ᆨ"&&novkar=="ᄅ")return "ᇃ";
+	if(antaw=="ᆪ"&&novkar=="ᄀ")return "ᇄ";
+	if(antaw=="ᆫ"&&novkar=="ᄀ")return "ᇅ";
+	if(antaw=="ᆫ"&&novkar=="ᄃ")return "ᇆ";
+	if(antaw=="ᆫ"&&novkar=="ᄉ")return "ᇇ";
+	if(antaw=="ᆫ"&&novkar=="ᅀ")return "ᇈ";
+	if(antaw=="ᆫ"&&novkar=="ᄐ")return "ᇉ";
+	if(antaw=="ᆮ"&&novkar=="ᄀ")return "ᇊ";
+	if(antaw=="ᆮ"&&novkar=="ᄅ")return "ᇋ";
+	if(antaw=="ᇊ"&&novkar=="ᄉ")return "ᇌ";
+	if(antaw=="ᆯ"&&novkar=="ᄂ")return "ᇍ";
+	if(antaw=="ᆯ"&&novkar=="ᄃ")return "ᇎ";
+	if(antaw=="ᇎ"&&novkar=="ᄒ")return "ᇏ";
+	if(antaw=="ᆯ"&&novkar=="ᄅ")return "ᇐ";
+	if(antaw=="ᆱ"&&novkar=="ᄀ")return "ᇑ";
+	if(antaw=="ᆱ"&&novkar=="ᄉ")return "ᇒ";
+	if(antaw=="ᆲ"&&novkar=="ᄉ")return "ᇓ";
+	if(antaw=="ᆲ"&&novkar=="ᄒ")return "ᇔ";
+	if(antaw=="ᆲ"&&novkar=="ᄋ")return "ᇕ";
+	if(antaw=="ᆯ"&&novkar=="ᄊ")return "ᇖ";
+	if(antaw=="ᆳ"&&novkar=="ᄉ")return "ᇖ";
+	if(antaw=="ᆯ"&&novkar=="ᅀ")return "ᇗ";
+	if(antaw=="ᆯ"&&novkar=="ᄏ")return "ᇘ";
+	if(antaw=="ᆯ"&&novkar=="ᅙ")return "ᇙ";
+	if(antaw=="ᆷ"&&novkar=="ᄀ")return "ᇚ";
+	if(antaw=="ᆷ"&&novkar=="ᄅ")return "ᇛ";
+	if(antaw=="ᆷ"&&novkar=="ᄇ")return "ᇜ";
+	if(antaw=="ᆷ"&&novkar=="ᄉ")return "ᇝ";
+	if(antaw=="ᆷ"&&novkar=="ᄊ")return "ᇞ";
+	if(antaw=="ᇝ"&&novkar=="ᄉ")return "ᇞ";
+	if(antaw=="ᆷ"&&novkar=="ᅀ")return "ᇟ";
+	if(antaw=="ᆷ"&&novkar=="ᄎ")return "ᇠ";
+	if(antaw=="ᆷ"&&novkar=="ᄒ")return "ᇡ";
+	if(antaw=="ᆷ"&&novkar=="ᄋ")return "ᇢ";
+	if(antaw=="ᆸ"&&novkar=="ᄅ")return "ᇣ";
+	if(antaw=="ᆸ"&&novkar=="ᄑ")return "ᇤ";
+	if(antaw=="ᆸ"&&novkar=="ᄒ")return "ᇥ";
+	if(antaw=="ᆸ"&&novkar=="ᄋ")return "ᇦ";
+	if(antaw=="ᆺ"&&novkar=="ᄀ")return "ᇧ";
+	if(antaw=="ᆺ"&&novkar=="ᄃ")return "ᇨ";
+	if(antaw=="ᆺ"&&novkar=="ᄅ")return "ᇩ";
+	if(antaw=="ᆺ"&&novkar=="ᄇ")return "ᇪ";
+	if(antaw=="ᇰ"&&novkar=="ᄀ")return "ᇬ";
+	if(antaw=="ᇰ"&&novkar=="ᄁ")return "ᇭ";
+	if(antaw=="ᇬ"&&novkar=="ᄀ")return "ᇭ";
+	if(antaw=="ᇰ"&&novkar=="ᅌ")return "ᇮ";
+	if(antaw=="ᇰ"&&novkar=="ᄏ")return "ᇯ";
+	if(antaw=="ᇰ"&&novkar=="ᄉ")return "ᇱ";
+	if(antaw=="ᇰ"&&novkar=="ᅀ")return "ᇲ";
+	if(antaw=="ᇁ"&&novkar=="ᄇ")return "ᇳ";
+	if(antaw=="ᇁ"&&novkar=="ᄋ")return "ᇴ";
+	if(antaw=="ᇂ"&&novkar=="ᄂ")return "ᇵ";
+	if(antaw=="ᇂ"&&novkar=="ᄅ")return "ᇶ";
+	if(antaw=="ᇂ"&&novkar=="ᄆ")return "ᇷ";
+	if(antaw=="ᇂ"&&novkar=="ᄇ")return "ᇸ";
+	if(antaw=="ᆨ"&&novkar=="ᄂ")return "ᇺ";
+	if(antaw=="ᆨ"&&novkar=="ᄇ")return "ᇻ";
+	if(antaw=="ᆨ"&&novkar=="ᄎ")return "ᇼ";
+	if(antaw=="ᆨ"&&novkar=="ᄏ")return "ᇽ";
+	if(antaw=="ᆨ"&&novkar=="ᄒ")return "ᇾ";
+	if(antaw=="ᆫ"&&novkar=="ᄂ")return "ᇿ";
+	//終聲ここまで
+	return false;
+}//function kombini 終
+let V_V=(str='',opt=0)=>{switch(str){//中聲字を互換用字母に變換
+	//opt: 0 不該當時に false を返す 1 str を其儘返す
+	case"ᅡ":return "ㅏ";
+	case"ᅢ":return "ㅐ";
+	case"ᅣ":return "ㅑ";
+	case"ᅤ":return "ㅒ";
+	case"ᅥ":return "ㅓ";
+	case"ᅦ":return "ㅔ";
+	case"ᅧ":return "ㅕ";
+	case"ᅨ":return "ㅖ";
+	case"ᅩ":return "ㅗ";
+	case"ᅭ":return "ㅛ";
+	case"ᅮ":return "ㅜ";
+	case"ᅲ":return "ㅠ";
+	case"ᅳ":return "ㅡ";
+	case"ᅵ":return "ㅣ";
+	case"ᆞ":return "ㆍ";
+	default:return opt?str:false;
+}}
+let kunmeti=(str='')=>{//字母列の中で單字に合成できるものを合成
+	str=str.replace(/\u200c*([ᄀ-ᄒ])([ᅡ-ᅵ])([ᆨ-ᇂ])?/g,kunmeti1);
+	str=str.replace(/\u200c*([ᄀ-ᅞ])(?![ᅡ-ᆧ])/g,kunmeti2);
+	return str;
+}
+function kunmeti1(kongruo='',p1='ᄀ',p2='ᅡ',p3='ᆧ'){//字母から完成型單字を出力
+	p1=p1.codePointAt(0)-0x1100;
+	p2=p2.codePointAt(0)-0x1161;
+	p3=p3.codePointAt(0)-0x11a7;
+	return String.fromCharCode(0xac00+p1*21*28+p2*28+p3);
+}
+function kunmeti2(kongruo='',p1='ᄀ'){//初聲字母を互換用字母に變換
+	switch(p1){
+		case 'ᄀ':return 'ㄱ';
+		case 'ᄁ':return 'ㄲ';
+		case 'ᄂ':return 'ㄴ';
+		case 'ᅜ':return 'ㄵ';
+		case 'ᅝ':return 'ㄶ';
+		case 'ᄃ':return 'ㄷ';
+		case 'ᄄ':return 'ㄸ';
+		case 'ᄅ':return 'ㄹ';
+		case 'ꥤ':return 'ㄺ';
+		case 'ꥨ':return 'ㄻ';
+		case 'ꥩ':return 'ㄼ';
+		case 'ꥬ':return 'ㄽ';
+		case 'ᄚ':return 'ㅀ';
+		case 'ᄆ':return 'ㅁ';
+		case 'ᄇ':return 'ㅂ';
+		case 'ᄈ':return 'ㅃ';
+		case 'ᄡ':return 'ㅄ';
+		case 'ᄉ':return 'ㅅ';
+		case 'ᄊ':return 'ㅆ';
+		case 'ᄋ':return 'ㅇ';
+		case 'ᄌ':return 'ㅈ';
+		case 'ᄍ':return 'ㅉ';
+		case 'ᄎ':return 'ㅊ';
+		case 'ᄏ':return 'ㅋ';
+		case 'ᄐ':return 'ㅌ';
+		case 'ᄑ':return 'ㅍ';
+		case 'ᄒ':return 'ㅎ';
+		case 'ᄔ':return 'ㅥ';
+		case 'ᄕ':return 'ㅦ';
+		case 'ᅛ':return 'ㅧ';
+		case 'ᄜ':return 'ㅮ';
+		case 'ᄝ':return 'ㅱ';
+		case 'ᄞ':return 'ㅲ';
+		case 'ᄠ':return 'ㅳ';
+		case 'ᄢ':return 'ㅴ';
+		case 'ᄣ':return 'ㅵ';
+		case 'ᄧ':return 'ㅶ';
+		case 'ᄩ':return 'ㅷ';
+		case 'ᄫ':return 'ㅸ';
+		case 'ᄬ':return 'ㅹ';
+		case 'ᄭ':return 'ㅺ';
+		case 'ᄮ':return 'ㅻ';
+		case 'ᄯ':return 'ㅼ';
+		case 'ᄲ':return 'ㅽ';
+		case 'ᄶ':return 'ㅾ';
+		case 'ᅀ':return 'ㅿ';
+		case 'ᅇ':return 'ㆀ';
+		case 'ᅌ':return 'ㆁ';
+		case 'ᅗ':return 'ㆄ';
+		case 'ᅘ':return 'ㆅ';
+		case 'ᅙ':return 'ㆆ';
+		default:return p1;
+	}
+}//kunmeti2 終
+
+//montriフォーカス時の系統からの二重入力除去函數
+let dedouble=()=>{setTimeout(function(){
+		let montri=document.getElementById("montri");
+		let pre = montri.value;
+		let pos = montri.selectionStart;	
+		montri.value = pre.substr(0,pos-1)+pre.substr(pos);
+		montri.setSelectionRange(pos-1,pos-1);
+},1);}
+
+//sup,AltGr,spaco,h,j,k,l,x,o處理
+let supre_malsupre=()=>{if(cxiSup)malsupre();else supre();}
+let supre=()=>{
+	klavoj=cxiAltGr?supAltGr:sup;cxiSup=1;klavaronSxangxi(klavoj);
+}
+let malsupre=()=>{
+	klavoj=cxiAltGr?AltGr:malsup;cxiSup=0;klavaronSxangxi(klavoj);
+}
+let AltGre=()=>{
+	if(cxiAltGr){
+		klavoj = cxiSup? sup: malsup;
+		cxiAltGr=0;
+	} else {
+		klavoj = cxiSup? supAltGr: AltGr;
+		cxiAltGr=1;
+	}
+	klavaronSxangxi(klavoj);
+}
+let spaco=()=>{
+	let str=cxiSup? "\u0020": "\u200c";//零幅非接合子 U+200C
+	let montri = document.getElementById("montri");
+	let pre=montri.value;
+	let pos=montri.selectionStart;
+	let prepre=pre.substring(0,pos);
+	//音節の入力が終はったので單字變換
+	if(ById('kunmeti').checked)prepre=kunmeti(prepre);
+	prepre=prepre.replace(/\u200c/g,'');//不要になった零幅非結合子を削除
+	montri.value=prepre+str+pre.substr(pos);
+	pos=prepre.length+1;
+	montri.setSelectionRange(pos,pos);
+	if(document.activeElement.id=="montri") dedouble();
+}
+//カーソル移動
+//消す、行移動
+
+//文字入力終
+
+//鍵盤切換（言語切換, sup, AltGr）引數：新鍵列
+let klavaronSxangxi=(kl)=>{
+	if(typeof(kl)=='string'){
+		for(k=0;k<49;k++)ById("kl"+k).innerHTML=kl.charAt(k);
+	}else if(typeof(kl)=='object'){
+		for(k=0;k<49;k++)ById("kl"+k).innerHTML=kl[k];
+	}
+	let sp=ById("spaco").innerHTML="␣";//Space鍵
+	//以下人差指位置表示
+	let kl29=ById('kl29');kl29.classList.remove('hejma');
+	let kl30=ById('kl30');kl30.classList.remove('hejma');
+	let kl32=ById('kl32');kl32.classList.remove('hejma');
+	let kl33=ById('kl33');kl33.classList.remove('hejma');
+//G-Kがホームポジション
+//	kl30.classList.add('hejma');kl33.classList.add('hejma');break;
+//F-Jがホームポジション
+	kl29.classList.add('hejma');kl32.classList.add('hejma');//break;
+}
+klavaronSxangxi(klavoj);
+</script>
+<noscript>JavaScript ne laboras.</noscript>
+
 </body>
 </html>
