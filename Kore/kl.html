@@ -146,6 +146,7 @@ let eniri=(k)=>{
 	montri.value=prepre+novkar+prepost;
 	montri.setSelectionRange(pos,pos);//カーソル位置變更
 	setTimeout(function(){klk.classList.remove('tajpinta');},150);//變色時間長
+	if(cxiSup)malsupre();
 }//function eniri 終
 let kombini=(antaw='',novkar='')=>{//直前文字と入力文字から合成字母+αを返す
 	if(!antaw)return V_V(novkar);//先頭 入力が韻母なら互換用字母に變換、それ以外はfalse
