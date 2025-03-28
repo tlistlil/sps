@@ -9,4 +9,3 @@ let $$=(elek,ctx)=>{
   let elj=ctx.querySelectorAll(elek);
   return Array.prototype.slice.call(elj);
 }
-log('laboras');
