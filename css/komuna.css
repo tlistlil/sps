@@ -29,7 +29,7 @@ input[type='button'],.butono{
 /*言語*/
 @font-face{
   font-family:'KoPubWorld Batang Pro';
-  src:url('tiparoj/CJK/KoPubWorld_Batang_Pro_Medium.woff2') format('woff2');
+  src:url('../tiparoj/CJK/KoPubWorld_Batang_Pro_Medium.woff2') format('woff2');
   font-display:'swap';
 }
 .Kore,  .ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
