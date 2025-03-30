@@ -34,6 +34,7 @@ case "bo" :URL=`${h}${d}.christian-steinert.de/#%7B%22activeTerm%22%3A%22${vort}
 case "bov":URL=`${s}star.aa-ken.jp/vdic/dic`;break;
 case "cb" :URL=`${s}${d}.cambridge.org/${d}/english-chinese-traditional/${vort}`;break;
 case "cj"  :URL=`${s}en.${wikt}.org/wiki/${vort}#Han_character`;break;
+case "cjk" :URL=`${s}tcvd-asia.com/zh/?s=${vort}`;break;
 case "cn" :URL=`${h}ci.nii.ac.jp/search?q=${vort}&range=0&count=20&sortorder=1&type=0`;break;
 case "ct" :URL=`${s}ctext.org/pre-qin-and-han/zh?searchu=${vort}`;break;
 case "dpp":URL=`${s}dopeoplesay.com/q/${vort}`;break;
