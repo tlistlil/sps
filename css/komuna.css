@@ -3,11 +3,12 @@
 	--blk:      hsl(  0,  0%,85%);
 	--UIRugx:   hsl(320,100%,50%);
 	--UIRugxLim:hsl(325,100%,50%);
+	--UIVerd:   hsl(120, 90%,15%);
 }
 *{box-sizing:border-box;}
-::webkit-scrollbar{width:8px;height:8px;}
-::webkit-scrollbar-corner{display:none;}
-::webkit-scrollbar-thumb{background:hsl(120,90%,15%);border-radius:3px;}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-corner{display:none;}
+::-webkit-scrollbar-thumb{background:var(--UIVerd);border-radius:3px;}
 /*全體*/
 body,textarea{background:#000;color:var(--blk);}
 body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體','Noto Serif CJK JP','IPAex明朝','KoPubWorld Batang Pro',serif;}
@@ -42,7 +43,7 @@ input[type='search']{
 }
 input[type='button'],.butono{
 	padding-block:1px;padding-inline:6px;
-	font:16px/1 '教育部標準宋體',serif;
+	font:16px/1 '教育部標準宋體','IPAex明朝',serif;
 }
 /*其他*/
 .margxeno{width:100%;height:5em;}
