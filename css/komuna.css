@@ -12,6 +12,8 @@
 /*全體*/
 body,textarea{background:#000;color:var(--blk);}
 body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體','Noto Serif CJK JP','IPAex明朝','KoPubWorld Batang Pro',serif;}
+html[lang='zh-TW'] body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體',serif;}
+html[lang='ja'] body{font:16px/1.8 'Gentium Plus','Noto Serif','Noto Serif CJK JP','IPAex明朝','KoPubWorld Batang Pro',serif;}
 h2,h3{border-bottom:ridge 5px hsl(0,0%,85%);}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
@@ -34,18 +36,17 @@ tr.ns{border-top:solid 1px;}
 input[type='search'],
 input[type='button'],
 .butono{
-	background:var(--UIRugx);color:#fff;
 	height:32px;
+	background:var(--UIRugx);color:#fff;
 	border:outset 3px var(--UIRugxLim);border-radius:8px;
 }
-a.butono{display:inline-block;padding:5px 6px;color:#fff;text-decoration:none;}
+a.butono{display:inline-block;padding:4px 6px;color:#fff;text-decoration:none;}
 input[type='search']{
 	padding:1px 4px;
 	font:16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
 }
 input[type='button'],.butono{
-	padding-block:1px;padding-inline:6px;
-	font:16px/1 '教育部標準宋體','IPAex明朝',serif;
+	font:16px/1 '教育部標準宋體','Noto Serif CJK TC','Noto Serif Traditional Chinese',serif;
 }
 /*其他*/
 .centre{text-align:center;}
