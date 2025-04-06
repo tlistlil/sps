@@ -8,11 +8,24 @@
 ::webkit-scrollbar{width:8px;height:8px;}
 ::webkit-scrollbar-corner{display:none;}
 ::webkit-scrollbar-thumb{background:hsl(120,90%,15%);border-radius:3px;}
+/*全體*/
 body,textarea{background:#000;color:var(--blk);}
 body{font:16px/1.8 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic','Noto Serif CJK JP','KoPubWorld Batang Pro',serif;}
+h2,h3{border-bottom:ridge 5px hsl(0,0%,85%);}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
-a.butono{color:#fff;text-decoration:none;}
+/*篇目*/
+.toc ol{list-style:none;}
+/*表格*/
+table{border-top:solid 1px;border-bottom:solid 1px;}
+table.rkapo{border-top:none;}
+table.rkapo thead{background:hsl(0,60%,20%);}
+table.remburo td{padding:0 1em;}
+table.nowrap caption,
+table.nowrap th,
+table.nowrap td{white-space:nowrap;}
+tr.ns{border-top:solid 1px;}
+/*控制*/
 input[type='search'],
 input[type='button'],
 .butono{
@@ -20,6 +33,7 @@ input[type='button'],
   height:32px;
   border:outset 3px var(--UIRugxLim);border-radius:8px;
 }
+a.butono{color:#fff;text-decoration:none;}
 input[type='search']{
   padding:1px 4px;
   font:16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
@@ -30,10 +44,41 @@ input[type='button'],.butono{
 }
 .margxeno{width:100%;height:5em;}
 li>p{margin:0;}
+/*其他*/
+.skatolo{margin:10px;border:solid 2px;padding:5px;}
+strong{text-decoration:underline;}
+
 /*言語*/
+@font-face{
+	font-family:'IPAex明朝';
+	src:url('../tiparoj/CJK/ipaexm.woff2') format('woff2');
+	font-display:'swap';
+}
 @font-face{
   font-family:'KoPubWorld Batang Pro';
   src:url('../tiparoj/CJK/KoPubWorld_Batang_Pro_Medium.woff2') format('woff2');
   font-display:'swap';
 }
-.Kore,  .ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
+@font-face{
+	font-family:'Gentium Plus';
+	src:url('../tiparoj/GCL/GentiumPlus-Regular.woff2') format('woff2');
+	font-display:'swap';
+}
+@font-face{
+	font-family:'Noto Nastaliq Urdu';
+	src:url('../tiparoj/Arab/NotoNastaliqUrdu-Regular.woff2') format('woff2');
+	font-display:'swap';
+}
+@font-face{
+	font-family:'Doolittle Garamond';
+	src:url('../tiparoj/DoolittleGaramond-Italic.woff2') format('woff2');
+	font-display:'swap';
+}
+.Arab,.ar{font:24px/1.5 'Noto Naskh Arabic',serif;}
+.Aran,.fa{font:24px/2.0 'Noto Nastaliq Urdu',serif;padding:0 .2em;}
+.GCL-noto{font:16px/1.8 'Noto Serif',serif;}
+.Hant,.zh{font:16px/1.8 'Gentium Plus','教育部標準宋體',serif}
+.Jpan,.ja{font:16px/1.8 'Gentium Plus','IPAex明朝','KoPubWorld Batang Pro',serif;}
+.Kore,.ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
+.Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
+.grande{font-size:1.5em;}
