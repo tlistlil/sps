@@ -23,12 +23,13 @@ a:visited{color:hsl(30,100%,50%);}
 li>p{margin:0;}
 /*表格*/
 table{border-top:solid 1px;border-bottom:solid 1px;border-collapse:collapse;}
+table td{padding:0 4px;}
 table.nowrap caption,
 table.nowrap th,
 table.nowrap td{white-space:nowrap;}
 table.rkapo{border-top:none;}
 table.rkapo thead{background:hsl(0,60%,20%);}
-table.remburo td{padding:0 1em;}
+table.remburo td{padding:0 16px;}
 table.tdCntr th,
 table.tdCntr td{text-align:center;}
 tr.ns{border-top:solid 1px;}
