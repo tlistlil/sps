@@ -20,7 +20,7 @@ a:visited{color:hsl(30,100%,50%);}
 /*清單*/
 li>p{margin:0;}
 /*表格*/
-table{border-top:solid 1px;border-bottom:solid 1px;}
+table{border-top:solid 1px;border-bottom:solid 1px;border-collapse:collapse;}
 table.rkapo{border-top:none;}
 table.rkapo thead{background:hsl(0,60%,20%);}
 table.remburo td{padding:0 1em;}
