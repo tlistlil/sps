@@ -38,7 +38,7 @@ input[type='button'],
 	height:32px;
 	border:outset 3px var(--UIRugxLim);border-radius:8px;
 }
-a.butono{color:#fff;text-decoration:none;}
+a.butono{display:inline-block;padding:5px 6px;color:#fff;text-decoration:none;}
 input[type='search']{
 	padding:1px 4px;
 	font:16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
