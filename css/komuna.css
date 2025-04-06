@@ -6,9 +6,9 @@
 	--UIVerd:   hsl(120, 90%,15%);
 }
 *{box-sizing:border-box;}
-::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar{width:16px;height:16px;}
 ::-webkit-scrollbar-corner{display:none;}
-::-webkit-scrollbar-thumb{background:var(--UIVerd);border-radius:3px;}
+::-webkit-scrollbar-thumb{background:var(--UIVerd);border-radius:5px;}
 /*全體*/
 body,textarea{background:#000;color:var(--blk);}
 body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體','Noto Serif CJK JP','IPAex明朝','KoPubWorld Batang Pro',serif;}
