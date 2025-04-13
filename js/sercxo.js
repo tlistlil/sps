@@ -112,7 +112,7 @@ case "yt"	:URL=`${s}${tr}.yandex.ru/?lang=${vort}`;break;
 case "yue"	:URL=`${h}cantonese.org/search.php?q=${vort}`;break;
 case "zh"	:URL=`${s}cjjc.weblio.jp/content/${vort}`;break;
 case "zh1"	:URL=`${h}hcs.aichi-u.ac.jp/php/search.php`;break;
-case "zye"	:URL=`${s}magnezone462.github.io/Zyevio-Qhan-La-Pryenxuankhri/`;break;
+case "zye"	:URL=`${s}kytlogia.github.io/Zyevio-Qhan-La-Pryenxuankhri/`;break;
 case "в"	:URL=`${s}ru.${w}.org/wiki/${vort}`;break;
 case "вс"	:URL=`${s}ru.${wikt}.org/wiki/${vort}`;break;
 case "всуд"	:URL=`${s}ru.${wikt}.org/wiki/${vort}#%D0%9C%D0%BE%D1%80%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B8_%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0`;break;
