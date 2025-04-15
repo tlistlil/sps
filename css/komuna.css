@@ -95,7 +95,8 @@ a:link,a:visited,u,strong{text-underline-offset:.4em;}
 .Jpan,.ja{font:16px/1.8 'Gentium Plus','Noto Serif','IPAex明朝','KoPubWorld Batang Pro',serif;}
 .Kore,.ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
 .Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
-.unuspaca{font:16px/1.8 'Julia Mono',monospace;}
+.unuspaca,
+html[lang='ja'] body.unuspaca{font:16px/1.8 'Julia Mono',monospace;}
 .grande{font-size:24px;}
 .grande.Arab,
 .grande.Aran,
