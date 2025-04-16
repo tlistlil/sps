@@ -50,8 +50,6 @@ input[type='button'],.butono{
 hr{margin:32px 0;}
 strong{text-decoration:underline;}
 a:link,a:visited,u,strong{text-underline-offset:.4em;}
-.butono{background:var(--UIRugx);color:#fff;border:outset 3px var(--UIRugxLim);}
-a.butono{color:#fff;}
 /*顏色*/
 ::-webkit-scrollbar-thumb{background:var(--UIVerd);}
 body,textarea{background:#000;color:var(--blk);}
@@ -61,6 +59,8 @@ a:visited{color:hsl(30,100%,50%);}
 .vkl{color:hsl(120,100%,50%);}
 table.rkapo{border-top:none;}
 table.rkapo thead{background:hsl(0,60%,20%);}
+a.butono{color:#fff;}
+.butono{background:var(--UIRugx);color:#fff;border:outset 3px var(--UIRugxLim);}
 /*語言*/
 @font-face{/*4,115KB*/
 	font-family:'IPAex明朝';font-display:'swap';
