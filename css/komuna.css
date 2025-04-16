@@ -59,7 +59,9 @@ a:visited{color:hsl(30,100%,50%);}
 .vkl{color:hsl(120,100%,50%);}
 table.rkapo{border-top:none;}
 table.rkapo thead{background:hsl(0,60%,20%);}
-a.butono{color:#fff;}
+a:link.butono,a:visited.butono{color:#fff;}
+input[type='search'],
+input[type='button'],
 .butono{background:var(--UIRugx);color:#fff;border:outset 3px var(--UIRugxLim);}
 /*語言*/
 @font-face{/*4,115KB*/
