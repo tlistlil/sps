@@ -38,6 +38,7 @@ a.butono.allasupro{
 	position:fixed;bottom:15px;right:15px;
 	border:outset 3px;border-radius:40%;padding:8px 8px 0;
 }
+a.allasupro>img{width:35px;height:35px;}
 input[type='search']{
 	padding:1px 4px;
 	font:16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
