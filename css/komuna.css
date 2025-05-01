@@ -26,6 +26,7 @@ table.nowrap caption,
 table.nowrap th,
 table.nowrap td{white-space:nowrap;}
 table.remburo td{padding:0 16px;}
+table.senlima{border:none;}
 table.tdCntr th,
 table.tdCntr td{text-align:center;}
 tr.ns{border-top:solid 1px;}
