@@ -82,6 +82,12 @@ input[type='button'],
 @font-face{/*162KB*/
 	font-family:'Noto Serif';font-display:'swap';
 	src:url('../tiparoj/GCL/NotoSerif-Regular.woff2') format('woff2');
+	font-style:normal;
+}
+@font-face{/*179KB*/
+	font-family:'Noto Serif';font-display:'swap';
+	src:url('../tiparoj/GCL/NotoSerif-Italic.woff2') format('woff2');
+	font-style:italic;
 }
 @font-face{/*28KB*/
 	font-family:'Julia Mono';font-display:'swap';
