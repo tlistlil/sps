@@ -44,7 +44,7 @@ case "ee" :URL=`${h}www.etymonline.com/search?q=${vort}`;break;
 case "el" :URL=`${h}logeion.uchicago.edu/${vort}`;break;
 case "en" :URL=`${sw}${d}.com/browse/${vort}#british`;break;
 case "enbo":URL=`${h}${d}.christian-steinert.de/#%7B%22activeTerm%22%3A%22"+vort+"%22%2C%22inputLang%22%3A%22en%22%2C%22currentListTerm%22%3A%22${vort}%22%7D`;break;
-case "eng":URL=`${h}${d}.goo.ne.jp/srch/en/${vort}/m0u/`;break;
+case "eng":URL=`${s}eow.alc.co.jp/search?q=${vort}`;break;
 case "enhy":URL=hy(vort,'EN_HY');break;
 case "enw" :URL=`${s}ejje.weblio.jp/sentence/content/${vort}`;break;
 case "eo"  :URL=`${s}${tr}.google.ru/?hl=ru#en/eo/${vort}`;break;
