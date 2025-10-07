@@ -23,13 +23,10 @@ li>p{margin:0;}
 div.scrWrap{margin:16px 0;}
 table{border-top:solid 1px;border-bottom:solid 1px;border-collapse:collapse;}
 table td{padding:0 4px;}
-table.nowrap caption,
-table.nowrap th,
-table.nowrap td{white-space:nowrap;}
+table.nowrap{& caption,& th,& td{white-space:nowrap;}}
 table.remburo td{padding:0 16px;}
 table.senlima{border:none;}
-table.tdCntr th,
-table.tdCntr td{text-align:center;}
+table.tdCntr{& th,& td{text-align:center;}}
 tr.ns{border-top:solid 1px;}
 table[frame='none']{border:none;}
 table[frame='all']{border:none;& thead,& tbody{border:solid 1px var(--griz);}}
