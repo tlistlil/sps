@@ -65,7 +65,7 @@ a:visited{color:hsl(30,100%,50%);}
 .rkl{color:hsl(330,100%,53%);}
 .vkl{color:hsl(120,100%,50%);}
 table.rkapo{border-top:none;}
-table.rkapo thead{background:hsl(0,60%,20%);}
+table.rkapo th{background:hsl(0,60%,20%);}
 a:link.butono,a:visited.butono{color:#fff;}
 a.allasupro{background:hsl(0,0%,60%);border-color:hsl(325,100%,50%);}
 input[type='search'],
@@ -116,8 +116,8 @@ input[type='button'],
 .Jpan,.ja{font:16px/1.8 'Gentium Plus','Noto Serif','IPAex明朝','KoPubWorld Batang Pro',serif;}
 .Kore,.ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
 .Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
-.Latn,.en-Latn{font:16px/1.8 'Gentium Plus',serif;}
-.Zmth{font:16px/1.8 'Euler Math',serif;}
+.Latn,.en-Latn{font:16px/1.8 'Gentium Plus','Noto Serif',serif;}
+.Zmth{font:16px/1.8 'Euler Math','Noto Serif',serif;}
 .unuspaca,
 html[lang='ja'] body.unuspaca{font:16px/1.8 'Julia Mono',monospace;}
 .grande{font-size:24px;}
