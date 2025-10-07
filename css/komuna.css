@@ -86,8 +86,10 @@ a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
 .rkl{color:hsl(330,100%,53%);}
 .vkl{color:hsl(120,100%,50%);}
-table.rkapo{border-top:none;}
-table.rkapo th{background:hsl(0,60%,20%);}
+table.rkapo{
+	border-top:none;
+	& thead,& th{background:hsl(0,60%,20%);}
+}
 a:link.butono,a:visited.butono{color:#fff;}
 a.allasupro{background:hsl(0,0%,60%);border-color:hsl(325,100%,50%);}
 input[type='search'],
