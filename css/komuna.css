@@ -1,6 +1,7 @@
-@charset "UTF-8";
+@charset 'utf-8';
 :root{
 	--blk:      hsl(  0,  0%,85%);
+	--griz:		hsl(  0,  0%,50%);
 	--UIRugx:   hsl(320,100%,50%);
 	--UIRugxLim:hsl(325,100%,50%);
 	--UIVerd:   hsl(120, 90%,15%);
@@ -75,7 +76,7 @@ input[type='button'],
 	font-family:'IPAex明朝';font-display:'swap';
 	src:url('../tiparoj/CJK/ipaexm.woff2') format('woff2');
 }
-@font-face{/*3.198KB*/
+@font-face{/*3,198KB*/
 	font-family:'KoPubWorld Batang Pro';font-display:'swap';
 	src:url('../tiparoj/CJK/KoPubWorld_Batang_Pro_Medium.woff2') format('woff2');
 }
@@ -92,6 +93,10 @@ input[type='button'],
 @font-face{/*28KB*/
 	font-family:'Julia Mono';font-display:'swap';
 	src:url('../tiparoj/GCL/JuliaMono-RegularLatin.woff2') format('woff2');
+}
+@font-face{/*271KB*/
+	font-family:'Euler Math';font-display:'swap';
+	src:url('../tiparoj/GCL/Euler-Math.woff2') format('woff2');
 }
 @font-face{/*177KB*/
 	font-family:'Noto Nastaliq Urdu';font-display:'swap';
@@ -111,6 +116,8 @@ input[type='button'],
 .Jpan,.ja{font:16px/1.8 'Gentium Plus','Noto Serif','IPAex明朝','KoPubWorld Batang Pro',serif;}
 .Kore,.ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
 .Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
+.Latn,.en-Latn{font:16px/1.8 'Gentium Plus',serif;}
+.Zmth{font:16px/1.8 'Euler Math',serif;}
 .unuspaca,
 html[lang='ja'] body.unuspaca{font:16px/1.8 'Julia Mono',monospace;}
 .grande{font-size:24px;}
