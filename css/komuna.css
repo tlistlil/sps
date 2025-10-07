@@ -31,6 +31,28 @@ table.senlima{border:none;}
 table.tdCntr th,
 table.tdCntr td{text-align:center;}
 tr.ns{border-top:solid 1px;}
+table[frame='none']{border:none;}
+table[frame='all']{border:none;thead,tbody{border:solid 1px var(--griz);}}
+table[frame='ends'],table[frame='sides']{
+	border:none;
+	thead,tbody{border-width:1px;border-color:var(--griz);}
+}
+table[frame='ends']{
+	thead{border-style:solid none none;}
+	tbody{border-style:solid none;}
+	thead+tbody{border-top:none;}
+	&.rkapo{thead,tbody{border-top:none;}}
+}
+table[frame='sides']{thead,tbody{border-style:none solid;}}
+table[grid='none']{th,td{border:none;}}
+table[grid='all'],table[grid='rows'],table[grid='cols']{th,td{
+	border-width:1px;border-color:var(--griz);
+	&:nth-child(1){border-left:none;}
+	&:last-child{border-right:none;}
+}}
+table[grid='all']{th,td{border-style:solid;}}
+table[grid='rows']{th,td{border-style:solid none;}}
+table[grid='cols']{th,td{border-style:none solid;}}
 /*控制*/
 input[type='search'],
 input[type='button'],
