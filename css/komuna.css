@@ -15,7 +15,6 @@ body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體','Noto Ser
 html[lang='zh-TW'] body{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體',serif;}
 html[lang='ja'] body{font:16px/1.8 'Gentium Plus','Noto Serif','Noto Serif CJK JP','IPAex明朝','KoPubWorld Batang Pro',serif;}
 h2,h3{border-bottom:ridge 5px hsl(0,0%,85%);}
-a.x>img{width:20px;background:hsl(60,100%,50%);}
 /*篇目*/
 .toc ol{list-style:none;}
 /*清單*/
@@ -82,6 +81,7 @@ a:link,a:visited,u,strong{text-underline-offset:.4em;}
 body,textarea{background:#000;color:var(--blk);}
 a:link   {color:hsl(60,100%,50%);}
 a:visited{color:hsl(30,100%,50%);}
+a.x:link,a.x:visited{color:hsl(90,100%,50%);}
 .rkl{color:hsl(330,100%,53%);}
 .vkl{color:hsl(120,100%,50%);}
 table.rkapo{
