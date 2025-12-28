@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='zh-TW'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<meta name='description' content='西夏文字検索,поиск тангуского письма'>
+	<title>西夏倉頡字碼捜索</title>
+	<link rel='icon' href='../ico/sps.ico'>
+	<link rel='stylesheet' href='../css/komuna.css'>
+	<style>
+	html{display:flex;justify-content:center;}
+	body{max-width:800px;}
+	#respondo>a{&:link,&:visited{text-decoration:none;color:hsl(0,0%,85%);}}
+	</style>
+	<script charset='UTF-8' src='../js/komuna.js'></script>
+</head>
+<body>
+	<h1 class='Tang grande'>𗼇𘝞𗛹𗵸𗏇𘍦𗡢𗡠</h1>
+	<p class='dekstre'>公開 <time datetime='2025-12-29'>2025年12月29日</time></p>
+  <input id='enir' autofocus placeholder='正則表現'>
+	<input type='button' id='srcbtn' value='捜索'><br>
+	<input type='checkbox' id='opt0'>
+	<label for='opt0'>全字格式（自動添補 ^ 和 $）</label>
+	<input type='radio' name='opt1' id='opt2' checked>
+	<label for='opt2'>捜索全字碼</label>
+	<input type='radio' name='opt1' id='opt1'>
+	<label for='opt1'>捜索輸入碼</label>
+	<hr>
+	<div id='kontMontr'></div>
+	<div id='respondo' class='Tang grande'></div>
+	<script src='Tang_src.js'></script><script>
+</body>
+</html>
