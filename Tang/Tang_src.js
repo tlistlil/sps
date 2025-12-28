@@ -39,7 +39,9 @@ let TSValList=(txt='')=>{//釋TSV為配列
 aEL(enir,'keydown',function(e){if(e.code=='Enter')src();});
 aEL(byId('srcbtn'),'click',src);
 aEL(document.body,'keyup',function(e){if(e.code=='KeyF'){//返回熱鍵
-	enir.focus();
-	enir.setSelectionRange(0,enir.value.length);
+	if(document.activeElement!=enir){
+		enir.focus();
+		enir.setSelectionRange(0,enir.value.length);
+	}
 }});
 akirTSV();
