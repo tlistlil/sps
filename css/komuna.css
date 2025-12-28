@@ -136,6 +136,11 @@ input[type='button'],
 	font-family:'Doolittle Garamond';font-display:'swap';
 	src:url('../tiparoj/DoolittleGaramond-Italic.woff2') format('woff2');
 }
+/*Tang*/
+@font-face{/*2.69MB*/
+	font-family:'Tangut Yinchuan';font-display:'swap';
+	src:url('../tiparoj/TangutYinchuan.woff2') format('woff2');
+}
 /*Yiii*/
 @font-face{/*135KB*/
 	font-family:'Noto Sans Yi';font-display:'swap';
@@ -146,14 +151,17 @@ input[type='button'],
 .Hant,.zh{font:16px/1.8 'Gentium Plus','Noto Serif','教育部標準宋體',serif;}
 .Jpan,.ja{font:16px/1.8 'Gentium Plus','Noto Serif','IPAex明朝','KoPubWorld Batang Pro',serif;}
 .Kore,.ko{font:16px/1.8 'KoPubWorld Batang Pro',serif;}
-.Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
 .Latn,.en-Latn{font:16px/1.8 'Gentium Plus','Noto Serif',serif;}
+.Shaw,.en{font:24px/1.0 'Doolittle Garamond',serif;}
+.Tang,.txg{font:36px/1.5 'Tangut Yinchuan','Tangut N4694','Noto Serif Tangut',serif;}
 .Yiii,.ii{font:36px/1.5 'Noto Sans Yi';}
 .Zmth{font:16px/1.8 'Euler Math','Noto Serif',serif;}
 .unuspaca,
 html[lang='ja'] body.unuspaca{font:16px/1.8 'Julia Mono',monospace;}
-.grande{font-size:24px;}
-.grande.Arab,
-.grande.Aran,
-.grande.Shaw{font-size:36px;}
-.grande.Yiii{font-size:48px;}
+.grande{font-size:24px;
+	&.Arab,
+	&.Aran,
+	&.Shaw{font-size:36px;}
+	&.Tang,
+	&.Yiii{font-size:48px;}
+}
