@@ -19,6 +19,15 @@ h2,h3{border-bottom:ridge 5px hsl(0,0%,85%);}
 .toc ol{list-style:none;}
 /*清單*/
 li>p{margin:0;}
+div.gloss{
+	& ol{list-style:none!important;}
+	& li{white-space:nowrap;}
+	&>ol{display:flex!important;flex-wrap:wrap;padding:0;
+		&>li{padding:0 .5em;font-weight:700;
+			&>ol{padding:0;font-weight:400;}
+		}
+	}
+}
 /*表格*/
 div.scrWrap{margin:16px 0;}
 table{border-top:solid 1px;border-bottom:solid 1px;border-collapse:collapse;}
