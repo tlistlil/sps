@@ -308,6 +308,7 @@ Unicode	input code	full code
 17132	llai	llai
 17133	llfd	llfvd
 17134	llcx	llcx
+18D00	llcx	llcx
 17135	llcsi	llcsi
 17136	llczl	llcsll
 17137	lldji	lldjpi
@@ -1526,6 +1527,7 @@ Unicode	input code	full code
 175F4	nkwbu	nkwbwu
 175F5	nklsu	nklsbtu
 175F6	nktpi	nktpi
+18D01	nktpi	nktpi
 175F7	nkrbu	nkrbtu
 175F8	nkrxn	nkrxnnn
 175F9	nksz	nksz
@@ -3853,6 +3855,7 @@ Unicode	input code	full code
 17F0B	alnq	alnq
 17F0C	almbw	almbw
 17F0D	alz	alz
+18D02	alz	alz
 17F0E	alcx	alcx
 17F0F	alzq	alzq
 17F10	alwa	alwa
@@ -3978,6 +3981,7 @@ Unicode	input code	full code
 17F88	zx	zx
 17F89	zsnn	zsnn
 17F8A	zmle	zmle
+18D03	zmle	zmle
 17F8B	zks	zks
 17F8C	zcs	zcs
 17F8D	zsb	zsb
@@ -4005,6 +4009,7 @@ Unicode	input code	full code
 17FA3	zylx	zylx
 17FA4	ztbu	ztbtu
 17FA5	zclx	zclx
+18D04	zclx	zclx
 17FA6	zsbp	zsbp
 17FA7	zsa	zsa
 17FA8	zfjq	zfjdq
@@ -4409,6 +4414,7 @@ Unicode	input code	full code
 18137	sxts	sxts
 18138	sxczl	sxczll
 18139	sxsx	sxsx
+18D05	sxsx	sxsx
 1813A	sxvy	sxvy
 1813B	sxvxn	sxvxnn
 1813C	sxwle	sxwlne
@@ -4423,6 +4429,7 @@ Unicode	input code	full code
 18145	sxfjb	sxfjb
 18146	sxtpi	sxtpi
 18147	sxrx	sxrx
+18D06	sxrx	sxrx
 18148	sxsbp	sxsbp
 18149	sxusx	sxusx
 1814A	sxwlp	sxwlbp
@@ -5361,6 +5368,7 @@ Unicode	input code	full code
 184EF	manx	mbanx
 184F0	mamle	mbamlne
 184F1	maz	mbaz
+18D07	maz	mbaz
 184F2	maymb	mbaymb
 184F3	matbu	mbatbtu
 184F4	matjb	mbatjb
@@ -5942,6 +5950,7 @@ Unicode	input code	full code
 18734	tlp	tjzlllp
 18735	tlwll	tjzlllwll
 18736	tlz	tjzlllz
+18D08	tlz	tjzlllz
 18737	tlmoa	tjzlllmoa
 18738	tlce	tjzlllce
 18739	tlyua	tjzlllybua
@@ -6124,3 +6133,14 @@ Unicode	input code	full code
 187EA	rjxgx	rtjxgx
 187EB	rxo	rtjxgxo
 187EC	rxmr	rtjxgxmr
+187ED	nlmjl	nnlllmtjal
+187EE	sbala	smbala
+187EF	fblrx	fmblrx
+187F0	sbnjl	smbntydczll
+187F1	fbfd	fmbfd
+187F2	qntl	qntydczll
+187F3	ntydl	ntydczll
+187F4	ylsb	ylsfmb
+187F5	hefdw	hhlnefdsyw
+187F6	smeyx	smeylrx
+187F7	sxbqj	smsylrxbqj
