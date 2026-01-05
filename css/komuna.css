@@ -33,21 +33,18 @@ div.scrWrap{margin:16px 0;}
 table{border-collapse:collapse;
 	display:block;overflow:scroll;border:none;
 	&::-webkit-scrollbar{display:none;}
-	&>thead,&>tbody{border-top:solid 1px var(--griz);}
-	&>tbody{border-bottom:solid 1px var(--griz);}
+	&>thead,&>tbody,& th,& td{border-color:var(--blk);border-width:1px;}
+	&>thead,&>tbody{border-top:solid 1px;}
+	&>tbody{border-bottom:solid 1px;}
 	& td{padding:0 4px;}
 	&.nowrap{& caption,& th,& td{white-space:nowrap;}}
 	&.remburo td{padding:0 16px;}
 	&.senlima{border:none;}
 	&.tdCntr{& th,& td{text-align:center;}}
 }
-tr.ns{border-top:solid 1px var(--griz);}
+tr.ns{border-top:solid 1px var(--blk);}
 table[frame='none']{border:none;}
-table[frame='all']{border:none;& thead,& tbody{border:solid 1px var(--griz);}}
-table[frame='ends'],table[frame='sides']{
-	border:none;
-	& thead,tbody{border-width:1px;border-color:var(--griz);}
-}
+table[frame='all']{border:none;& thead,& tbody{border:solid 1px var(--blk);}}
 table[frame='ends']{
 	& thead{border-style:solid none none;}
 	& tbody{border-style:solid none;}
@@ -57,7 +54,7 @@ table[frame='ends']{
 table[frame='sides']{& thead,& tbody{border-style:none solid;}}
 table[grid='none']{& th,& td{border:none;}}
 table[grid='all'],table[grid='rows'],table[grid='cols']{& th,& td{
-	border-width:1px;border-color:var(--griz);
+	border-width:1px;border-color:var(--blk);
 	&:nth-child(1){border-left:none;}
 	&:last-child{border-right:none;}
 }}
