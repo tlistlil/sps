@@ -41,7 +41,7 @@ table{border-collapse:collapse;
 	&.senlima{border:none;}
 	&.tdCntr{& th,& td{text-align:center;}}
 }
-tr.ns{border-top:solid 1px;}
+tr.ns{border-top:solid 1px var(--griz);}
 table[frame='none']{border:none;}
 table[frame='all']{border:none;& thead,& tbody{border:solid 1px var(--griz);}}
 table[frame='ends'],table[frame='sides']{
