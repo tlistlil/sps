@@ -36,11 +36,11 @@ table{border-collapse:collapse;
 	&>thead,&>tbody{border-top:solid 1px var(--griz);}
 	&>tbody{border-bottom:solid 1px var(--griz);}
 	& td{padding:0 4px;}
+	&.nowrap{& caption,& th,& td{white-space:nowrap;}}
+	&.remburo td{padding:0 16px;}
+	&.senlima{border:none;}
+	&.tdCntr{& th,& td{text-align:center;}}
 }
-table.nowrap{& caption,& th,& td{white-space:nowrap;}}
-table.remburo td{padding:0 16px;}
-table.senlima{border:none;}
-table.tdCntr{& th,& td{text-align:center;}}
 tr.ns{border-top:solid 1px;}
 table[frame='none']{border:none;}
 table[frame='all']{border:none;& thead,& tbody{border:solid 1px var(--griz);}}
@@ -99,7 +99,7 @@ a.x:link,a.x:visited{color:hsl(90,100%,50%);}
 .rkl{color:hsl(330,100%,53%);}
 .vkl{color:hsl(120,100%,50%);}
 table.rkapo{
-	border-top:none;
+	& thead,& tbody{border-top:none;}
 	& thead,& th{background:hsl(0,60%,20%);}
 }
 a:link.butono,a:visited.butono{color:#fff;}
