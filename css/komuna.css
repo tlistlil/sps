@@ -31,7 +31,7 @@ div.gloss{
 /*表格*/
 div.scrWrap{margin:16px 0;}
 table{border-top:solid 1px;border-bottom:solid 1px;border-collapse:collapse;
-	display:block;overflow:scroll;
+	display:block;overflow:scroll;border:none;
 	&::-webkit-scrollbar{display:none;}
 	& td{padding:0 4px;}
 }
