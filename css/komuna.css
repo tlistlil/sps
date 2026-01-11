@@ -36,7 +36,7 @@ table{border-collapse:collapse;
 	&>thead,&>tbody,& th,& td{border-color:var(--blk);border-width:1px;}
 	&>thead,&>tbody{border-top:solid 1px;}
 	&>tbody{border-bottom:solid 1px;}
-	& td{padding:0 4px;}
+	& th,& td{padding:0 5px;}
 	&.nowrap{& caption,& th,& td{white-space:nowrap;}}
 	&.remburo td{padding:0 16px;}
 	&.senlima{border:none;}
