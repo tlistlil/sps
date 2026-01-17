@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{text-align:center;}
+header{display:none;}
+.md .hr main ol.decimal{list-style:none;}
+.sceno{
+	& button,& .butono{display:inline-block;margin:.5em;padding:.5em .8em;}
+	& ol.decimal{
+		list-style:none;
+		&>li{margin:.5em 0;}
+		&>li>span.p{cursor:pointer;}
+	}
+	& #tipitTeksto{text-align:left;}
+	& #kar{padding:0 1em;}
+	& #karPre{background:linear-gradient(90deg,#111,#eee);
+		background-clip:text;color:transparent;}
+	& #karPost{background:linear-gradient(90deg,#eee,#111);
+		background-clip:text;color:transparent;}
+	& #enir{
+		width:8em;max-width:100%;
+		background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);
+		font:48px 'IPAex明朝','Tangut Yinchuan',serif;text-align:center;
+	}
+}
+#elekto,#cxefo,#cxeso,#fino{display:none;}
