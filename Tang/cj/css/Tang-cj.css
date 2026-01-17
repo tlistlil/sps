@@ -17,7 +17,7 @@ span.Tang+br+input{
 #sxalti{display:none;}
 #sxalti_etikedo{
 	display:block;
-	position:fixed;left:20px;bottom:60px;width:6em;height:3em;z-index:100;
+	position:fixed;left:20px;bottom:15px;width:6em;height:3em;z-index:100;
 	border:ridge 3px hsl(330,100%,50%);border-radius:8px;
 	background:hsl(0,0%,25%);text-align:center;padding-top:6px;
 }
