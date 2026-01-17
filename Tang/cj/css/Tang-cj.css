@@ -24,3 +24,4 @@ span.Tang+br+input{
 #sxalti:checked~.ekz td:nth-child(1){visibility:visible;}
 #sxalti:checked~p .testA{visibility:visible;}
 code{border:2px solid hsl(330,20%,20%);border-radius:5px;background:hsl(330,20%,15%);padding:3px 7px;}
+footer{padding-bottom:15px;}
