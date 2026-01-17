@@ -1,0 +1,19 @@
+@charset('UTF-8');
+body{text-align:center;&.hr>main{padding-bottom:5em;}}
+.sceno{
+	& a.butono,
+	& input[type='button'],
+	& button
+	{display:inline-block;margin:.5em;padding:.5em 2em;}
+	& .Tang.grande{font-size:80px;padding:20px;}
+	& .enir{
+		width:8em;max-width:100%;
+		background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);
+		font:48px 'IPAex明朝','Tangut Yinchuan',serif;text-align:center;
+	}
+}
+#ordinalo_pre,
+#tempatako_pre,
+#ordinalo,
+#tempatako,
+#rezulto{display:none;}
