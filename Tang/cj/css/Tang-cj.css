@@ -1,0 +1,27 @@
+@charset "UTF-8";
+a.tocLego{font-family:'Noto Serif','IPAex明朝','Tangut Yinchuan',serif;}
+p{max-width:800px;}
+.ekz{
+	border:none;
+	td:nth-child(1){visibility:hidden;}
+	td:nth-child(2),input{font:48px 'Noto Serif','IPAex明朝','Tangut Yinchuan',serif;}
+	input{width:3em;background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);}
+}
+.md .hr table.ekz{border:none;}
+span.Tang+input,
+span.Tang+br+input{
+	width:8em;margin-left:15px;
+	background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);
+	font:48px 'Noto Serif','IPAex明朝','Tangut Yinchuan',serif;
+}
+.testA{visibility:hidden;}
+#sxalti{display:none;}
+#sxalti_etikedo{
+	display:block;
+	position:fixed;left:20px;bottom:60px;width:6em;height:3em;z-index:100;
+	border:ridge 3px hsl(330,100%,50%);border-radius:8px;
+	background:hsl(0,0%,25%);text-align:center;padding-top:6px;
+}
+#sxalti:checked~.ekz td:nth-child(1){visibility:visible;}
+#sxalti:checked~p .testA{visibility:visible;}
+code{border:2px solid hsl(330,20%,20%);border-radius:5px;background:hsl(330,20%,15%);padding:3px 7px;}
