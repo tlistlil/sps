@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>test</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+<input id='enir'>
+<table><tr>
+<td>keydown:	</td><td id='kd'></td></tr><tr>
+<td>keypress:	</td><td id='kp'></td></tr><tr>
+<td>input:		</td><td id='ip'></td>
+</tr></table>
+<script>
+const enir=byId('enir');
+aEL(enir,'keydown',	function(e){byId('kd').innerHTML=e.key;});
+aEL(enir,'keypress',function(e){byId('kp').innerHTML=e.key;});
+aEL(enir,'input',		function(e){byId('ip').innerHTML=e.data;});
+</script>
+</body>
+</html>
