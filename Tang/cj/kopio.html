@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>写経 - 西夏文</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<link rel='stylesheet' href='./css/Tang-kopio.css'>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+
+<main>
+<div id='supro' class='sceno'>
+	<p>般若心経を西夏文字で写経して功徳を積みましょう。
+	</p>
+	<p>本文を一字ずつ表示するので、RIME で字そのものを入力するか、倉頡入力のアルファベットを入れていってください（大文字でも小文字でも可）。
+	</p>
+	<button id='komenci'>始める</button><br>
+	<button id='rekomenci'>途中から再開</button><br>
+	<input type='checkbox' id='cxiMontri' checked>
+	<label for='cxiMontri'>打鍵を常に表示する</label><br>
+	<a href='?t=cj00' class='butono'>やめる</a>
+</div>
+
+<div id='elekto' class='sceno'>
+	<p>節を選択してください。
+	</p>
+	<ol class='decimal' start='1'>
+		<li><span id='p1' class='p'>観自在菩薩……</span></li>
+		<li><span id='p2' class='p'>舎利子色不異空……</span></li>
+		<li><span id='p3' class='p'>舎利子是諸法空相……</span></li>
+		<li><span id='p4' class='p'>是故空中無色……</span></li>
+		<li><span id='p5' class='p'>無無明亦無無明尽……</span></li>
+		<li><span id='p6' class='p'>無所得故菩提薩埵……</span></li>
+		<li><span id='p7' class='p'>三世諸仏……</span></li>
+		<li><span id='p8' class='p'>故知般若波羅蜜多……</span></li>
+		<li><span id='p9' class='p'>能除一切苦……</span></li>
+		<li><span id='p10' class='p'>真言</span></li>
+	</ol>
+	<button id='reiriAlSupro'>戻る</button>
+</div>
+
+<div id='cxefo' class='sceno'>
+	<div id='tipitTeksto' class='Tang'>&nbsp;</div>
+	<p><span id='traduko'>訳</span>
+	</p>
+	<p><span id='traskribo'>転写</span>
+	</p>
+	<p><span id='karPre' class='Tang grande'>　　</span>
+	<span id='kar' class='Tang grande'>𗓚</span>
+	<span id='karPost' class='Tang grande'>　　</span>
+	</p>
+	<input id='enir'>
+	<p><span id='mesagxo'>Enterを押すと答え合わせ</span>
+	</p>
+	<button id='montru'>打鍵を見る</button>
+	<p><span id='klavoj'>&nbsp;</span>
+	</p>
+	<button id='cxesi'>やめる</button>
+</div>
+
+<div id='cxeso' class='sceno'>
+	<p><span id='tipito'></span>文字を写経しました！
+	</p>
+	<p><span id='tipitparto' class='Tang'></span>
+	</p>
+	<div class='margxeno'></div>
+	<p><a href='?t=cj00' class='butono'>西夏倉頡トップに戻る</a>
+	</p>
+</div>
+
+<div id='fino' class='sceno'>
+	<p><span class='grande'>完</span>
+	</p>
+	<p><span class='Tang'>𗓚𘄽𘄒𘎑𘏞𗓽𗕥𗸰𗤶𗖰𗚩 </span>
+	</p>
+	<p><span class='Tang'>𘝯𘝵𗦳𘋢𗥤𗓰𘄒𘎑𘏞𗓽𗕥𗸰𗭍𗿳𗏁𘜭𗄊𗲠𗭼𘟀𘍔𗧹𗄑𗄑𗌗𗰛𘛣𗓡𘈷𗩨𗲠𗑠𗅋𘁟𗲠𗩨𗑠𗅋𘁟𗩨𘝵𗲠𘟂𗲠𘝵𗩨𘟂𗨙𗾫𘝦𗹬𗄊𗪘𗋚𗍊𘛣𗓡𘈷𘌽𗱕𗹙𗲠𘍦𗅋𘎳𗅋𗈞𗅋𘓨𗅋𗑗𗅋𘎲𗅋𗟥𘌽𘔼𗲠𘂤𗩨𗤋𗨙𗾫𘝦𗹬𗤋𗑉𗐴𗮮𗢯𘛽𗉣𗤋𗩨𗙏𗡎𘕉𘄩𗹙𗤋𗑉𗐯𗤋𘙇𗫡𗉣𗹬𗐯𗤋𗮀𗤋𗤋𗮀𗤋𗋃𘂆𗤋𘙇𗫡𘒺𗈶𗤋𘒺𗈶𗋃𘂆𗤋𘍔𗰖𗈞𗵘𗤋𘄡𗤋𘜘𗦇𗤋𗋕𘜘𗦇𗤋𘔼𘏞𘛛𗖚𗸰𘄒𘎑𘏞𗓽𗕥𗸰𗖵𗤶𗦁𗄿𗤋𗦁𗄿𗤋𘔼𗴒𗃬𗅋𘟣𘝅𗉷𘈞𗾫𗈲𗈜𗩾𘃪𘈬𗦺𘕕𘗽𗱕𗢳𘄒𘎑𘏞𗓽𗕥𗸰𘕿𗖵𘔼𘘦𗠝𗷧𗸰𗓽𘋅𗴥𘋅𘏞𘛛𗟧𘌽𘔼𘄒𘎑𘏞𗓽𗕥𗸰𗫂𘜶𗼈𗥺𘟂𘜶𗭼𗥺𘟂𗩾𗨁𗥺𘟂𘜄𘜄𗤋𗥺𘟂𘍔𗄑𗄑𗟥𗩱𘞌𗒘𗅋𘗫𘌽𘔼𘄒𘎑𘏞𗓽𗕥𗸰𗥺𘎪𗥺𗖸𘎪</span>
+	</p>
+	<p><span class='Tang'>𘊾𘆨𘊾𘆨<br>𘏞𗓽𘊾𘆨<br>𘏞𗓽𗗆𘊾𘆨<br>𘏞𘛛𗡿𗶴</span>
+	</p>
+	<div class='margxeno'></div>
+	<p><a href='?t=cj00' class='butono'>西夏倉頡トップに戻る</a>
+	</p>
+</div>
+</main>
+<script src='./js/br.js'></script>
+</body>
+</html>
