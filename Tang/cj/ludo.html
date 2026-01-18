@@ -16,129 +16,71 @@
 </header>
 
 <main>
-<link rel='stylesheet' href='./css/Tang-ludo.css'>
-
 <div id='supro' class='sceno'>
-
-<p>コースを選択してください。
-</p>
-
-<button id='kurso1'>普通コース</button><br>
-<button id='kurso2'>タイムアタック</button><br>
-<a href='./' class='butono'>やめる</a>
-</p>
-
+	<p>コースを選択してください。</p>
+	<button id='kurso1'>普通コース</button><br>
+	<button id='kurso2'>タイムアタック</button><br>
+	<a href='./' class='butono'>やめる</a>
 </div>
 
 <div id='ordinalo_pre' class='sceno'>
-
-<h2 id=普通コース>普通コース</h2>
-
-<p>ランダムに表示される西夏文字を西夏倉頡で直接入力するか、アルファベットで入力キーを解答してください（大文字でも小文字でも可）。
-</p>
-
-<p>時間制限はありません。出題のうちの正解数があなたの得点となります。
-</p>
-
-<p>出題数を選んでください。
-</p>
-
-<button id='opt1_10' value=10>10問</button><br>
-<button id='opt1_20' value=20>20問</button><br>
-<button id='opt1_30' value=30>30問</button><br>
-<button id='opt1_0'>戻る</button>
-
+	<h2 id=普通コース>普通コース</h2>
+	<p>ランダムに表示される西夏文字を西夏倉頡で直接入力するか、アルファベットで入力キーを解答してください（大文字でも小文字でも可）。
+	</p>
+	<p>時間制限はありません。出題のうちの正解数があなたの得点となります。
+	</p>
+	<p>出題数を選んでください。
+	</p>
+	<button id='opt1_10' value=10>10問</button><br>
+	<button id='opt1_20' value=20>20問</button><br>
+	<button id='opt1_30' value=30>30問</button><br>
+	<button id='opt1_0'>戻る</button>
 </div>
 
 <div id='tempatako_pre' class='sceno'>
-
-<h2 id=タイムアタック>タイムアタック</h2>
-
-<p>ランダムに表示される西夏文字を西夏倉頡で直接入力するか、アルファベットで入力キーを解答してください（大文字でも小文字でも可）。
-</p>
-
-<p>時間内に正解できた数があなたの得点となります。わからない場合はパスして次の字に進むこともできますが、その場合得点から1点を差し引きます。
-</p>
-
-<p>制限時間を選んでください。（選択ボタンを押すとゲームを開始します）
-</p>
-
-<button id='opt2_2' value=120>2分</button><br>
-<button id='opt2_5' value=300>5分</button><br>
-<button id='opt2_10' value=600>10分</button><br>
-<button id='opt2_0'>戻る</button>
-
+	<h2 id=タイムアタック>タイムアタック</h2>
+	<p>ランダムに表示される西夏文字を西夏倉頡で直接入力するか、アルファベットで入力キーを解答してください（大文字でも小文字でも可）。
+	</p>
+	<p>時間内に正解できた数があなたの得点となります。わからない場合はパスして次の字に進むこともできますが、その場合得点から1点を差し引きます。
+	</p>
+	<p>制限時間を選んでください。（選択ボタンを押すとゲームを開始します）
+	</p>
+	<button id='opt2_2' value=120>2分</button><br>
+	<button id='opt2_5' value=300>5分</button><br>
+	<button id='opt2_10' value=600>10分</button><br>
+	<button id='opt2_0'>戻る</button>
 </div>
 
 <div id='ordinalo' class='sceno'>
-
-<h2 id=普通コース_1>普通コース</h2>
-
-<p>問<span id='ord_qNo'></span>
-</p>
-
-<p>現在の得点 <span id='ord_poentaro'></span>
-</p>
-
-<p><span id='ord_q' class='Tang grande'>&nbsp;</span>
-</p>
-
-<input class='enir' id='ord_enir'>
-
-<p><span id='ord_a'>&nbsp;</span>
-</p>
-
-<p>Enter を押すと<span id='ord_enter'>答え合わせ</span>
-</p>
-
+	<h2 id=普通コース_1>普通コース</h2>
+	<p>問<span id='ord_qNo'></span></p>
+	<p>現在の得点 <span id='ord_poentaro'></span></p>
+	<p><span id='ord_q' class='Tang grande'>&nbsp;</span></p>
+	<input class='enir' id='ord_enir'>
+	<p><span id='ord_a'>&nbsp;</span></p>
+	<p>Enter を押すと<span id='ord_enter'>答え合わせ</span></p>
 </div>
 
 <div id='tempatako' class='sceno'>
-
-<h2 id=タイムアタック_1>タイムアタック</h2>
-
-<p><span id='tat_tempo' class='grande'>&nbsp;</span>
-</p>
-
-<p>問<span id='tat_qNo'></span>
-</p>
-
-<p>現在の得点 <span id='tat_poentaro'></span>
-</p>
-
-<p><span id='tat_q' class='Tang grande'>&nbsp;</span>
-</p>
-
-<input class='enir' id='tat_enir'>
-
-<p><span id='tat_a'>&nbsp;</span>
-</p>
-
-<p>Enter を押すと<span id='tat_enter'>答え合わせ</span>
-</p>
-
-<input type='button' id='salti' value='この問題をパス'>
-
+	<h2 id=タイムアタック_1>タイムアタック</h2>
+	<p><span id='tat_tempo' class='grande'>&nbsp;</span></p>
+	<p>問<span id='tat_qNo'></span></p>
+	<p>現在の得点 <span id='tat_poentaro'></span></p>
+	<p><span id='tat_q' class='Tang grande'>&nbsp;</span></p>
+	<input class='enir' id='tat_enir'>
+	<p><span id='tat_a'>&nbsp;</span></p>
+	<p>Enter を押すと<span id='tat_enter'>答え合わせ</span></p>
+	<input type='button' id='salti' value='この問題をパス'>
 </div>
 
 <div id='rezulto' class='sceno'>
-
-<h2 id='ゲーム終了'>ゲーム終了</h2>
-
-<p>あなたの得点は <span id='fina_poentaro' class='grande'></span> です。
-</p>
-
-<p>※ 得点の記録機能はありません。
-</p>
-
-<p><span id='eraris'></span>
-</p>
-
-<button id='reludi'>もう一度遊ぶ</button><br>
-<button id='reiriAlSupro'>開始画面に戻る</button>
-
+	<h2 id='ゲーム終了'>ゲーム終了</h2>
+	<p>あなたの得点は <span id='fina_poentaro' class='grande'></span> です。</p>
+	<p>※ 得点の記録機能はありません。</p>
+	<p><span id='eraris'></span></p>
+	<button id='reludi'>もう一度遊ぶ</button><br>
+	<button id='reiriAlSupro'>開始画面に戻る</button>
 </div>
-
 </main>
 
 <script src='./js/Tang_ludo.js'></script>
