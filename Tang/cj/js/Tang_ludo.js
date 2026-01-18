@@ -108,7 +108,7 @@ let ord_novDemando=()=>{
 	ord_enir.value='';
 	ord_enter.innerHTML='答え合わせ';
 }
-aEL(ord_enir,'keydown',function(e){if(e.code=='Enter')ord_cxeki(e.target.value);});
+aEL(ord_enir,'keydown',function(e){if(e.key=='Enter')ord_cxeki(e.target.value);});
 let ord_fini=()=>{
 	let percento=Math.floor(100*poentaro/ord);
 	fina_poentaro.innerHTML=`${poentaro}/${ord} (${percento}%)`;
@@ -167,7 +167,7 @@ let tat_cxeki=(provo='')=>{
 		tat_novDemando();
 	}
 }
-aEL(tat_enir,'keydown',function(e){if(e.code=='Enter')tat_cxeki(e.target.value);});
+aEL(tat_enir,'keydown',function(e){if(e.key=='Enter')tat_cxeki(e.target.value);});
 aEL(byId('salti'),'click',function(){//パス
 	if(tat_ekprob)eraritaj.push([q[0],q[1],'']);
 	qNo++;
