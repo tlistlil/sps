@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>総合練習（七）バグ字一覧 - 西夏倉頡チュートリアル</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<link rel='stylesheet' href='./css/Tang-cj.css'>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+<header>
+	<h1>総合練習（七）バグ字一覧</h1>
+	<nav id='toc' class='toc'><ol>
+	</ol></nav>
+</header>
+
+<main>
+<input type='checkbox' id='sxalti' checked>
+<label for='sxalti' id='sxalti_etikedo'>表示切替</label>
+
+<div class='skatolo'>【注意】以下の練習は倉頡のルールが破られている場合の練習なので、まずルールが習得できていない場合は混乱する可能性があります。あやふやな箇所がある方は戻って復習するか、飛ばして<a href='?t=cj40'>次の回</a>に進んだ方が良いかもしれません。今回の内容をやらなくても、ほとんどの西夏文字（6145字のうち、約99.2%）は入力できます。
+</div>
+<img src='./img/Tang-cangjie.webp' style='width:100%;max-width:720px;filter:invert(1);'>
+<p>すべての西夏文字はこれまでに学習したルール通りにやれば入力できるべきであるはずですが、Kawasaki (2016) （以下、「原論文」）に付された全西夏文字の倉頡コード一覧には誤りと思われるものが若干存在しています。RIME の実装で一部直されていますが、一部はそのまま誤りを継承してしまっています。使用人口が少ないせいでバグが取れていないと言うべきかもしれません。
+</p>
+<p>バグ箇所のキーは頭をひねっても取りようが無いので一つ一つ覚えるしかありません。といっても RIME にはサジェスト機能があるので、最後の方のキーは覚えていなくても入力できます。1打目や2打目にバグがあるとサジェストが使えない可能性が高いので、これを優先的に把握しておくのが良いでしょう。
+</p>
+<p>というわけで、西夏倉頡を考えるだけでなく膨大な字数のコード一覧まで作り上げた Kawasaki の業績には敬意を払いつつも、現時点で筆者がバグであろうと判断している字を以下に指摘しておきます。皆さんも納得できない字を見つけたら報告していただけると嬉しいです。
+</p>
+<p>その他、原論文の使用フォントとこのサイトで使用している唐兀銀川の細かい差異により字形が取りづらくなっている字があります。これはバグではありませんが、別立てでこのページの下部にまとめます。
+</p>
+<p>これらは将来的には修正される可能性があります。
+</p>
+
+<h2 id='最初の2打以内にバグのある字'>最初の2打以内にバグのある字</h2>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>AEML</td>
+		<td>𗼂</td>
+		<td><input></td>
+		<td>ba¹</td>
+		<td>「猟をする」最初の H を見落としています。</td>
+	</tr><tr>
+		<td>CMBTU</td>
+		<td>𗯦</td>
+		<td><input></td>
+		<td>ljɨj²</td>
+		<td>姓の一つ「令」など。CSM を字首に取っています（この字形を持つ他の字では原則通りです）。</td>
+	</tr><tr>
+		<td>SLMN</td>
+		<td>𗎦</td>
+		<td><input></td>
+		<td>kha²</td>
+		<td>「どもる」M が L の上にあるのに、取るのは L が先です。</td>
+	</tr><tr>
+		<td>MBXHP</td>
+		<td>𗍸</td>
+		<td><input></td>
+		<td>par²</td>
+		<td>「蹄」字首を3打で取っています<a href='#noto1' id='cxef1'><sup>1</sup></a>。</td>
+	</tr><tr>
+		<td>MKZ</td>
+		<td>𗶀</td>
+		<td><input></td>
+		<td>lju²</td>
+		<td>「鸚鵡」字首 WX を誤って MNK で取っています。</td>
+	</tr><tr>
+		<td>MTNXP</td>
+		<td>𗵸</td>
+		<td><input></td>
+		<td>xjij¹</td>
+		<td>漢語「頡」などの音訳。最初の W を誤って M で取っています。</td>
+</tr></tbody></table>
+</div>
+
+<h2 id='その他のバグ字'>その他のバグ字</h2>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>ASLP</td>
+		<td>𗥳</td>
+		<td><input></td>
+		<td>ljị²</td>
+		<td>「迅速な」次字首を SBL と取っていますが、この字形を持つ他の字では普通に SB と取ります。</td>
+	</tr><tr>
+		<td>AORA</td>
+		<td>𗩋</td>
+		<td><input></td>
+		<td>mə¹</td>
+		<td>「功績」AO は字首としてまとめて取るのがルールですが A だけを字首に取っています。</td>
+	</tr><tr>
+		<td>AVTO</td>
+		<td>𗫩</td>
+		<td><input></td>
+		<td>dźjɨr¹</td>
+		<td>「捨てる」次字身の最初の R を誤って T で取っています。</td>
+	</tr><tr>
+		<td>HLKYG</td>
+		<td>𗢙</td>
+		<td><input></td>
+		<td>njar²</td>
+		<td>「悶えている」最後はどう見ても F ですがコードは G になっています。</td>
+	</tr><tr>
+		<td>LLMTO</td>
+		<td>𗅱</td>
+		<td><input></td>
+		<td>tjɨ̣j²</td>
+		<td>「図」恐らく P を誤って O で取っています。</td>
+	</tr><tr>
+		<td>MANTI</td>
+		<td>𗸳</td>
+		<td><input></td>
+		<td>lã¹</td>
+		<td>「やもめの」字身を分割せずに1, 2, 最後打と取ったかと思われます。</td>
+	</tr><tr>
+		<td>MJSQU</td>
+		<td>𘈢</td>
+		<td><input></td>
+		<td>ljɨ̣j¹</td>
+		<td>「えり」G を誤って Q で取っています。</td>
+	</tr><tr>
+		<td>MLSYW</td>
+		<td>𘈹</td>
+		<td><input></td>
+		<td>ˑjo̱w²</td>
+		<td>「愛する」M を誤って Y で取っています。</td>
+	</tr><tr>
+		<td>NQNKL</td>
+		<td>𘆤</td>
+		<td><input></td>
+		<td>śio̱w¹</td>
+		<td>「飼う」MX を誤って NK で取っています。</td>
+	</tr><tr>
+		<td>SBMZK</td>
+		<td>𘄋</td>
+		<td><input></td>
+		<td>ɣjɨ¹</td>
+		<td>「結婚する」最後の E を誤って K で取っています。</td>
+	</tr><tr>
+		<td>SDFQ</td>
+		<td>𘗨</td>
+		<td><input></td>
+		<td>mə²</td>
+		<td>「姉」字身を誤って2打で取っています。</td>
+	</tr><tr>
+		<td>SQSU</td>
+		<td>𘈻</td>
+		<td><input></td>
+		<td>wər¹</td>
+		<td>「種付けする」同上。</td>
+	</tr><tr>
+		<td>YBRW</td>
+		<td>𗭖</td>
+		<td><input></td>
+		<td>khjɨ²</td>
+		<td>「敷居」同上。</td>
+	</tr><tr>
+		<td>SXAYX</td>
+		<td>𘅲</td>
+		<td><input></td>
+		<td>tshji²</td>
+		<td>「普遍の」真ん中の NX を誤って A で取っています。</td>
+	</tr><tr>
+		<td>SXNJU</td>
+		<td>𘅼</td>
+		<td><input></td>
+		<td>tiwo̱w¹</td>
+		<td>漢語「都」の音写。NTJM は塊で取るのがルールですが NTJ で切ってしまっています。</td>
+	</tr><tr>
+		<td>WSNJX</td>
+		<td>𗚀</td>
+		<td><input></td>
+		<td>tśjo¹</td>
+		<td>「身軽に移動する」同上。</td>
+	</tr><tr>
+		<td>MTNJX</td>
+		<td>𘔈</td>
+		<td><input></td>
+		<td>dwər¹</td>
+		<td>「瘡」（病名）同上。</td>
+	</tr><tr>
+		<td>SXROX</td>
+		<td>𘅫</td>
+		<td><input></td>
+		<td>tśju¹</td>
+		<td>「管理する」字身を分割せずに1, 2, 最後打と取ったかと思われます。</td>
+	</tr><tr>
+		<td>SXTJO</td>
+		<td>𘅮</td>
+		<td><input></td>
+		<td>tsowr¹</td>
+		<td>「うすでつく」最後の P を誤って O で取っています。</td>
+	</tr><tr>
+		<td>ZLZQJ</td>
+		<td>𘇯</td>
+		<td><input></td>
+		<td>nji̱²</td>
+		<td>「サンショウウオ」S を誤って Z で取っています。</td>
+	</tr><tr>
+		<td>TLBO</td>
+		<td>𗔱</td>
+		<td><input></td>
+		<td>ljɨ¹</td>
+		<td>「威風」BW の最後を誤って B で取っています。</td>
+	</tr><tr>
+		<td>YXVJD</td>
+		<td>𘀫</td>
+		<td><input></td>
+		<td>zjɨ̣¹</td>
+		<td>「敵」VD を VJD と取っています<a href='#noto2' id='cxef2'><sup>2</sup></a>。</td>
+</tr></tbody></table>
+</div>
+
+<p>U+17F20～U+17F24 ではコードが一つずつずれていて、Unicode 順で次の字を覚えておかねばならないという無理ゲーが発生しています。
+</p>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>ALZA</td>
+		<td>𗼠</td>
+		<td><input></td>
+		<td>khjwɨ¹</td>
+		<td>U+17F20「功、恩」</td>
+	</tr><tr>
+		<td>ALETJ</td>
+		<td>𗼡</td>
+		<td><input></td>
+		<td>pjịj¹</td>
+		<td>U+17F21「占い師」</td>
+	</tr><tr>
+		<td>ALWXO</td>
+		<td>𗼢</td>
+		<td><input></td>
+		<td>zər²</td>
+		<td>U+17F22 姓の一つ「叙」など</td>
+	</tr><tr>
+		<td>ALMWO</td>
+		<td>𗼣</td>
+		<td><input></td>
+		<td>ɣjɨr¹</td>
+		<td>U+17F23 漢語「兮」の音訳</td>
+	</tr><tr>
+		<td>ALSZ</td>
+		<td>𗼤</td>
+		<td><input></td>
+		<td>wow¹</td>
+		<td>U+17F24「旺盛な」漢語「旺」の借用。コードは U+17F20 の字形のもの。</td>
+</tr></tbody></table>
+</div>
+
+<p><span class='Tang grande'>𘣊</span>は字首では前回やった通り VYD ですが、字身では VYD と取る字と YD と取る字があって統一が取れていません。最後にハネを加えた<span class='Tang grande'>𘠷</span>も同様に VYDU または YDU です。
+</p>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>XYD</td>
+		<td>𗐋</td>
+		<td><input></td>
+		<td>ɣja²</td>
+		<td>「軒」</td>
+	</tr><tr>
+		<td>WLYD</td>
+		<td>𗘸</td>
+		<td><input></td>
+		<td>khjã¹</td>
+		<td>漢語「乾」などの音訳</td>
+	</tr><tr>
+		<td>WLYDU</td>
+		<td>𗘹</td>
+		<td><input></td>
+		<td>同上</td>
+		<td>上字の異体字。</td>
+	</tr><tr>
+		<td>CLMZM</td>
+		<td>𗮐</td>
+		<td><input></td>
+		<td>thu̱¹</td>
+		<td>「求める」最後に MM が付いている。</td>
+	</tr><tr>
+		<td>YUVYD</td>
+		<td>𗭤</td>
+		<td><input></td>
+		<td>pjụ¹</td>
+		<td>「不完全な」</td>
+	</tr><tr>
+		<td>AVYU</td>
+		<td>𗣋</td>
+		<td><input></td>
+		<td>khjã²</td>
+		<td>「強敵」</td>
+</tr></tbody></table>
+</div>
+
+<p><span class='Tang grande'>𘡳</span>は横に切らず MZ を字首に取る字と、M だけを字首に取る字があって統一が取れていません。幸い該当するのは3字だけです（少ないせいでどちらが正しくどちらがバグかは不明）。
+</p>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>MZMLL</td>
+		<td>𘔧</td>
+		<td><input></td>
+		<td>gjụ¹</td>
+		<td>「座席」MZ が字首。</td>
+	</tr><tr>
+		<td>MZVYD</td>
+		<td>𗀓</td>
+		<td><input></td>
+		<td>śjij²</td>
+		<td>「乞う」MZ が字首。VYD も問題のある字形のうえ、最後の MM が無視されている。</td>
+	</tr><tr>
+		<td>MZLE</td>
+		<td>𗀟</td>
+		<td><input></td>
+		<td>nji̱¹</td>
+		<td>「娶る」M が字首。</td>
+</tr></tbody></table>
+</div>
+
+<h2 id='フォント差によりコードが取れなくなっている字'>フォント差によりコードが取れなくなっている字</h2>
+
+<ul>
+	<li><span class='Tang grande'>𘦐</span> を持つ3字は、原論文では<img src='./img/ykaib.webp' style='width:50px;' loading='lazy'>などと字首の最後が E でなく K になっています。よって字首の打鍵は YK です。なお Noto Serif Tangut の字形も K の方です。</li>
+	<li><span class='Tang grande'>𗧌𗴥</span>の2字は原論文で<span class='Tang grande'>𘡱</span> (MNK) の部分が<span class='Tang grande'>𘣑</span> (WX) と表示されているため、WX として取る必要があります。</li>
+	<li><span class='Tang grande'>𗛤</span> par²「棚」は原論文では<img src='./img/tjmbp.webp' style='width:45px;' loading='lazy'>の様に字身の横画が B の上だけです。このため打鍵は TJMBP です。</li>
+</ul>
+<p><span class='Tang'></span><input>
+
+<ul>
+	<li>点1つは I で、点2つは Y ですが、<span class='Tang grande'>𗿿</span> djij「聖賢」は XILA です。原論文では<img src='./img/xila.webp' style='width:55px;' loading='lazy'>の様に表示されています。左下からハネるのは Y の点として認められないという扱いなんですね。（ではどのキーかというと V らしいのですが、どうせ飛ばす画なので覚える必要はありません。）</li>
+	<li><span class='Tang grande'>𗈏</span> djij²「苦労する」は原論文では点が一つなので SXIU です。</li>
+	<li><span class='Tang grande'>𗿳</span> dzjɨj¹「時」は原論文では<img src='./img/ztlp.webp' style='width:70px;' loading='lazy'>と縦棒が字身に入っています。よって ZTLP です。</li>
+</ul>
+<p><span class='Tang'></span><input>
+
+<ul>
+	<li><span class='Tang grande'>𘒹</span> lhu²「増す」は原論文では<img src='./img/mklrx.webp' style='width:60px;' loading='lazy'>と1画目が次と離れているので MKLRX です。</li>
+	<li><span class='Tang grande'>𘛕</span> śiwə²「絢爛たる」は中央付近の縦画が字首の右端である様に見えますが、原論文では<img src='./img/txsml.webp' style='width:50px;' loading='lazy'>と字身の左端になっています。よって字首は<span class='Tang grande'>𘨆</span>、全体の打鍵は TXSML です。</li>
+	<li><span class='Tang grande'>𗚡</span> njɨ̱²「庶民」は、原論文では字身最初の M がナベブタです。このため打鍵は TJYLN です。</li>
+</ul>
+<p><span class='Tang'></span><input>
+
+<hr>
+
+<p>注</p>
+<p><a href='#cxef1' id='noto1'>1</a> これは原論文の誤りではなく、RIME のアップデート時のミスです。原論文のフォントでは B の上の横画と X の上の横画が離れて2画になっており、打鍵は MBNKP でした（MX を誤って NK と取っていた）。
+</p>
+<p><a href='#cxef2' id='noto2'>2</a> <span class='Tang'>𘣇</span>を VD と取るのか VJD と取るのか原論文には混乱が見られます（双方がおよそ半々ずつある）。しかし J はこの字形が単独で字身にこない限り飛ばすのでほぼ問題ないところ、単独で字身にくる唯一の例がこの字というわけです。私見としては縦画は D で取れるので J を入れる必要はなく、VD で統一するのがよいのではないかと思っています。
+</p>
+</main>
+
+<div class='margxeno'></div>
+<a class='allasupro' href='#'>
+	<img src='../../css/chevron-up.svg'>
+</a>
+<footer>
+	<nav class='centre'>
+		<a href='36.html'>前に戻る</a>&#x3000;
+		<a href='./'>篇目</a>&#x3000;
+		<a href='40.html'>次へ進む</a>
+	</nav>
+</footer>
+</body>
+</html>
