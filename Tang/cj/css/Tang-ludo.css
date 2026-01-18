@@ -4,9 +4,10 @@ body{text-align:center;&.hr>main{padding-bottom:5em;}}
 	& a.butono,
 	& input[type='button'],
 	& button
-	{display:inline-block;margin:.5em;padding:.5em 2em;padding-block:1px;padding-inline:6px;
+	{display:inline-block;height:3em;margin:.5em;padding:.5em 2em;
 	background:#f0a;color:#fff;border:outset 3px hsl(320,100%,50%);border-radius:8px;cursor:pointer;
 	font:16px 'Noto Serif','IPAex明朝',serif;}
+	& a.butono{padding-top:.5em;}
 	& .Tang.grande{font-size:80px;padding:20px;}
 	& .enir{
 		width:8em;max-width:100%;
