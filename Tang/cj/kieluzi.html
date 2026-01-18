@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>西夏倉頡検索の使い方～正規表現入門～</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<link rel='stylesheet' href='./css/Tang-cj.css'>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+<header>
+	<h1></h1>
+	<nav id='toc' class='toc'><ol>
+		<li><a class='tocLego' href='#検索データについて'><span class='Latn'>1 </span>検索データについて</a></li>
+		<li><a class='tocLego' href='#正規表現について'><span class='Latn'>2 </span>正規表現について</a>
+			<ol>
+			<li><a class='tocLego' href='#正規表現とは'><span class='Latn'>2.1 </span>正規表現とは</a></li>
+			<li><a class='tocLego' href='#開始と終了'><span class='Latn'>2.2 </span>開始と終了</a></li>
+			<li><a class='tocLego' href='#ドット'><span class='Latn'>2.3 </span>ドット</a></li>
+			<li><a class='tocLego' href='#文字クラス'><span class='Latn'>2.4 </span>文字クラス</a></li>
+			<li><a class='tocLego' href='#量指定子'><span class='Latn'>2.5 </span>量指定子</a></li>
+			<li><a class='tocLego' href='#先読みと戻り読み条件'><span class='Latn'>2.6 </span>先読みと戻り読み条件</a></li>
+			</ol>
+		</li>
+		<li><a class='tocLego' href='#その他のコントロール'><span class='Latn'>3 </span>その他のコントロール</a></li>
+		<li><a class='tocLego' href='#出力について'><span class='Latn'>4 </span>出力について</a></li>
+		<li><a class='tocLego' href='#できないこと'><span class='Latn'>5 </span>できないこと</a></li>
+	</ol></nav>
+</header>
+
+<main>
+<p><a href='../src.html'>西夏倉頡字碼捜索</a>では、倉頡コードを使って正規表現（漢：正則表現）で字を検索できます。部首で検索するよりも圧倒的に速く、四角号碼よりも柔軟に検索条件を指定できるため、電子化されていない西夏文テクストを読む際に威力を発揮します。
+</p>
+<p>たとえば右側が<span class='Tang'>𘤑</span>なのはわかるが、左側が不鮮明で判読できない字があったとします。検索ボックスに <code>yo</code> と入れて検索するだけで倉頡コードに <code>yo</code> を含む11字が表示され、そのうち7字が<span class='Tang'>𘤑</span>をツクリに持つことが即座にわかります。検索結果の各文字が古今文字集成へのリンクになっていますから、あとはリンク先で意味を調べるなり、字形から絞り込むなりして7字のうちのどれかを特定するだけです。
+</p>
+
+<h2 id='検索データについて'>検索データについて</h2>
+<p>倉頡コードには入力コード（輸入碼）と全字コード（全字碼）の二つがあります。入力コードはみなさんが学習中の、省略規則によって1字を5打以内で打てる様にしたコードです。全字コードは仮に省略がないとすれば打つことになるコードです。この全字コードはつまり西夏文字の字形を丸々コード化したものなので、字形で字を検索するのに使えるというわけです。
+</p>
+<p>検索画面で「捜索全字碼」の代わりに「捜索輸入碼」を選択することで、一応入力コードでも検索ができる様になっています。
+</p>
+
+<h2 id='正規表現について'>正規表現について</h2>
+
+<h3 id='正規表現とは'>正規表現とは</h3>
+<p>正規表現は文字列を検索する際などに、複雑なパターンを指定するための表現方法です。
+</p>
+<p>プログラミング言語で正規表現を扱うときは <code>/yo/</code> などの様に最初と最後をデリミタで囲むことになっていますが、西夏倉頡字碼捜索ではデリミタは必要ありません。
+</p>
+<p>アルファベット A-Za-z は正規表現でもそのままの意味です。 <code>aa</code> または <code>AA</code> で検索すれば、倉頡で A で取る要素が二つ連続している字、つまり<span class='Tang'>𗃣</span> (VAA), <span class='Tang'>𗃪</span> (VAAI), <span class='Tang'>𗆭</span> (LLAABU)... などがヒットします。小文字と大文字はどちらでも検索できる様に設定してあります。
+</p>
+<p>アルファベットを除く ASCII の記号の多くは正規表現で特別な意味を持ちます。以下、西夏倉頡字碼捜索で使うものを簡単に説明します。
+</p>
+
+<h3 id='開始と終了'>開始と終了</h3>
+<p><code>^</code> は字の先頭、 <code>$</code> は字の末尾を表します。
+</p>
+<p>たとえば <code>^tjm</code> で検索すると（全字コードを検索。以下断りがなければ同じ）、倉頡コードが TJM で始まる32字がヒットします。このうち1字が<span class='Tang'>𘤘</span>に始まる字、2字が<span class='Tang'>𘫄</span>を持つ字、1字が<span class='Tang'>𘡩</span>にたまたま字身<span class='Tang'>𗀀</span>が続く字で、残りはすべて<span class='Tang'>𘡩</span>にたまたま横棒で始まる次字首が続く字です。ここから字首の<span class='Tang'>𘣗</span>は独立した字素でなく、<span class='Tang'>𘫄</span>の一部として2字にのみ現れることがわかります。
+</p>
+<p>今度は <code>tjm$</code> で検索すると、倉頡コードが TJM で終わる49字がヒットします。今度は<span class='Tang'>𘫕</span>が6字ある（ <code>mtjmtjm$</code> でさらに検索すると数える手間を省ける）他は目立ったパターンはありません。よって字の最後の<span class='Tang'>𘣗</span>は独立した字素であることがわかります。
+</p>
+
+<h3 id='ドット'>ドット</h3>
+<p>ドット <code>.</code> は任意の1文字を表します。
+</p>
+<p>例えば <code>^.e</code> で検索すると、字の最初に<span class='Tang'>𘢌𘠁𘠛𘡊</span>などが一つだけあってその次にサンズイ<span class='Tang'>𘠣</span>が続いている様な字がヒットします。32字あるそうです。
+</p>
+<p>今度は <code>^..$</code> で検索してみます。最初から終わりまでに何かが2文字あるコード、つまり2つの字素だけからなる西夏文字にしては単純な字がヒットします。果たして何文字あるでしょうか。
+</p>
+
+<h3 id='文字クラス'>文字クラス</h3>
+<p><code>[ ]</code> で囲んだ部分は文字クラスを指定します。文字クラスは <code>[ ]</code> 内の文字のどれか1字にマッチします。たとえば <code>^[axz]snn</code> なら<span class='Tang'>𘢌𘡃𘤊</span>のどれかで始まっていて、右側が<span class='Tang'>𘡑</span>の字というわけです。AXZ は紛らわしいことが多いですがこれだけで2字に絞れます。
+</p>
+
+<h3 id='量指定子'>量指定子</h3>
+<p><code>{}</code> で数字を囲むことでパターンの繰返しを指定できます。　<code>^[almbstj]{2,4}$</code> なら「基本字形（二）」の回までに習ったキーだけを使って2字素以上4字素以内からなる字を絞り込めます。同じキーの基本字形と輔助字形は区別できないので<span class='Tang'>𘠡</span>が紛れ込んでいますが、概ね簡単な字ばかりがヒットします。
+</p>
+<p>ここまで全字コードのみを検索してきましたが、入力コードを使ってみましょう。西夏倉頡で3打以内で入力できる字が何字あるか知りたいとします。 <code>.</code> で任意の1字を表せますから、「捜索輸入碼」を選択して <code>^.{0,3}$</code> とすれば答えがわかります。結果は516字で、西夏倉頡全体が6145字ありますから一割弱というところです。 <code>^.{4}$</code> とすると4打で打てる字は2389字、 <code>.{5}</code> とすると5打の字は3240字とわかります。
+</p>
+<p>逆に一番複雑な西夏文字は何かを調べてみます。全字コードに戻って、 <code>.{10,}</code> とすると10字素以上からなる193字が出てきます。この様に <code>,</code> の後は指定しないことも可能です。10 を 11, 12 と増やしていくと、 <code>.{14,}</code> で1字になりました。この字 <span class='Tang'>𘔉</span> が一番複雑な字の一つと言えそうです。
+</p>
+
+<h4 id='特別な量指定子'>特別な量指定子</h4>
+<p><code>? * +</code> は特別な量指定子です。 <code>?</code> は <code>{0,1}</code> に、 <code>*</code> は <code>{0,}</code> に、 <code>+</code> は <code>{1,}</code> に相当します。たとえばある字の左側が<span class='Tang'>𘢌</span>か<span class='Tang'>𘤄</span>か判別できず、真ん中に何かがあるけどやはり判別できず、右側は<span class='Tang'>𘤊</span>であるとします。 <code>^h?a.+z$</code> とすることで「ha か a で始まり、間に任意の字素が1つ以上あり、zで終わる」という条件に合う字を絞り込みます。14字がヒットしますが左中右の構造になっていて右が<span class='Tang'>𘤊</span>なのはそのうち<span class='Tang'>𗦋𗦌𗩀𗩳𗪷𗼍𘴂𗼩</span>の8字です。あとは古今文字集成に飛んで意味を考えます。
+</p>
+
+<h3 id='先読みと戻り読み条件'>先読みと戻り読み条件</h3>
+<p><code>(? … )</code> は検索文字列に隣接する条件を指定します。この括弧の中にある <code>?</code> は量指定子の意味を持ちません。
+</p>
+<ul>
+	<li>肯定先読み条件 <code>(?= … )</code></li>
+	<li>否定先読み条件 <code>(?! … )</code></li>
+	<li>肯定戻り読み条件 <code>(?&lt;= … )</code></li>
+	<li>否定戻り読み条件 <code>(?&lt;! … )</code></li>
+</ul>
+<p>の4種類があり、西夏倉頡字碼捜索では否定先読みと否定戻り読みをよく使います。
+</p>
+<p>例えば<span class='Tang'>𘢎</span>の下の部分が判別できず、<span class='Tang'>𘥿</span>でないことはわかるとします。 <code>hq(?!k)</code> で検索すると<span class='Tang'>𘥿</span>以外の HQ を絞り込みますが、検索結果に関係ない<span class='Tang'>𘣾</span>が目立っています。そこで更に <code>hq(?![kj])</code> とすると<span class='Tang'>𘣾</span>も除外でき、結果は14字に絞られます。ここまできたら字の大まかな形からどれかは特定できそうです。これが否定先読みです。
+</p>
+<p>判っている部分の前に否定条件を設定する時は否定戻り読みになります。例えば<span class='Tang'>𘠆</span>で終わる字を知りたいとき、単に <code>u$</code> で検索するとヒットする419字のほとんどは<span class='Tang'>𘡺𘢀𘡾</span>……など別の要素を持つ文字です。そこで U と複合字形を作るキーを除外して <code>(?&lt;![bdtqmw])u$</code> で再検索すると、無事に複合字形が除かれた<span class='Tang'>𘠆</span>だけの検索結果7字が得られます。
+</p>
+
+<h2 id='その他のコントロール'>その他のコントロール</h2>
+<ul>
+	<li>「全字格式」をオンにすると入力文字列を字全体にマッチするように検索します。すなわち <code>al.+o</code> を <code>^al.+o$</code> の様にみなします。</li>
+	<li>検索ボックスからフォーカスが離れた状態で <code>f</code> (focus) を押すと検索ボックスにフォーカスを戻します。</li>
+</ul>
+
+<h2 id='出力について'>出力について</h2>
+<ul>
+	<li>検索結果は古今文字集成の各字の項目にリンクしています。</li>
+	<li>オンマウスで Unicode, 倉頡の全字コードおよび入力コードを表示します。</li>
+</ul>
+
+<h2 id='できないこと'>できないこと</h2>
+<ul>
+	<li>西夏倉頡で同じキーになっている字形間の区別はできません。</li>
+	<li>倉頡コードは字の構成情報を含まないため、構成記述で絞り込むことはできません。</li>
+	<li>検索データは Kawasaki (2016) の全倉頡コードリストを一部修正したものですが、元のリストにバグが含まれているためまれに目当ての字がヒットしないおそれがあります。顕著なものについては<a href='37.html'>バグ字一覧</a>を参照してください。</li>
+</ul>
+</main>
+
+<div class='margxeno'></div>
+<a class='allasupro' href='#'>
+	<img src='../../css/chevron-up.svg'>
+</a>
+<footer>
+	<nav class='centre'>
+		<a href='./'>戻る</a>&#x3000;
+	</nav>
+</footer>
+</body>
+</html>
