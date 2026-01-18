@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>字形の取り方 - 西夏倉頡チュートリアル</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<link rel='stylesheet' href='./css/Tang-cj.css'>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+<header>
+	<h1>字形の取り方</h1>
+	<nav id='toc' class='toc'><ol>
+		<li><a class='tocLego' href='#途中省略のルール'><span class='Latn'>1 </span>途中省略のルール</a></li>
+		<li><a class='tocLego' href='#具体例'><span class='Latn'>2 </span>具体例</a></li>
+	</ol></nav>
+</header>
+
+<main>
+<input type='checkbox' id='sxalti'>
+<label for='sxalti' id='sxalti_etikedo'>表示切替</label>
+
+<h2 id='途中省略のルール'>途中省略のルール</h2>
+
+<p>ここまでは字の見た目そのままのキーを打つ字を練習してきました。しかしこの方法では複雑な字ほど打鍵数が増えてしまいます。
+</p>
+<p>そこで倉頡入力法では途中の字形を飛ばして打つルールが決まっています。このルールに従えば最大5打で1字が入力できます。西夏文字は複雑な字が多い文字なので<a href='#noto01' id='cxef01'><sup>1</sup></a>、この点では倉頡と相性がいいと言えます。
+</p>
+<p>ルールは以下のとおりです。
+</p>
+
+<ol class='decimal' start='1'>
+	<li>字形は左→右、上→下、外→内の順序で取ります。</li>
+	<li>
+		<p>整体字（左右や上下や外内に分解できない字）は最大4打で取ります。</p>
+		<ol class='decimal' start='1'>
+			<li>4打以内に収まる字は全て取ります。</li>
+			<li>4打を超える字は、1, 2, 3打目を取り、あとは飛ばして最後を取ります。</li>
+		</ol>
+	</li>
+	<li>
+		<p>組合字（左右や上下や外内に分解できる字）は次の様に分割します。</p>
+		<ol class='decimal' start='1'>
+			<li>最初の部分を「字首」、残りの部分を「字身」と呼びます。</li>
+			<li>左右構造では、最初にスパッと縦に切れるところが切れ目です。それより左が字首、右が字身です。</li>
+			<li>上下構造では、最初にスパッと横に切れるところが切れ目です。それより上が字首、下が字身です。</li>
+			<li>その他、カマエ・タレ・ニョウがあるときはそれらが字首、残りの部分が字身です。</li>
+		</ol>
+	</li>
+	<li>
+		<p>字首は最大2打で取ります。</p>
+		<ol class='decimal' start='1'>
+			<li>2打以内に収まるときは全て取ります。</li>
+			<li>2打を超えるときは最初と最後だけ取り、途中は飛ばします。</li>
+		</ol>
+	</li>
+	<li>
+		<p>字身は最大3打で取ります。</p>
+		<ol class='decimal' start='1'>
+			<li>字身が整体字のときは3打以内に収まれば全て取り、3打を超えるときは1, 2打目と飛ばして最後を取ります。</li>
+			<li>字身が組合字のときは先ほどと同様にして更に分割し、最初の部分を「次字首」、残りの部分を「次字身」と呼びます。</li>
+			<li>次字首が1打で取れるときは次字身を最大2打で取ります。2打を超えるときは最初と最後のみを取ります。</li>
+			<li>次字首が2打以上ならその最初と最後のみを取り、次字身は最後の1打のみを取ります。</li>
+		</ol>
+	</li>
+</ol>
+
+<img src='./img/trancxo0.webp' style='width:300px;'>
+<img src='./img/trancxo1.webp' style='width:300px;'>
+
+<p>なおRIMEでは省略せずに打っても字を入力できるようになっていますが、字形を取って打つ手数はタイピング速度に直結するので是非うまく省略する習慣をつけましょう。
+</p>
+
+<h2 id='具体例'>具体例</h2>
+
+<div class='scrWrap ekz'>
+<table class='ekz'><tbody><tr>
+		<td>MLA</td>
+		<td>𗹎</td>
+		<td><input></td>
+		<td>twã¹</td>
+		<td>姓「段」など。字首は1打目と最後だけを取ります。</td>
+	</tr><tr>
+		<td>SBA</td>
+		<td>𘃻</td>
+		<td><input></td>
+		<td>ˑjĩ¹</td>
+		<td>姓「殷」など</td>
+	</tr><tr>
+		<td>BJL</td>
+		<td>𘉉</td>
+		<td><input></td>
+		<td>bạ²</td>
+		<td>「まっすぐの」</td>
+	</tr><tr>
+		<td>TJASA</td>
+		<td>𗞸</td>
+		<td><input></td>
+		<td>tsə̣¹</td>
+		<td>「樹木の一種」字身は1打目、2打目、最後だけを取ります。</td>
+	</tr><tr>
+		<td>TSBL</td>
+		<td>𗒋</td>
+		<td><input></td>
+		<td>śiow¹</td>
+		<td>「集める」字首が1打で取れても字身は最大3打なので合計4打です。</td>
+	</tr><tr>
+		<td>AMLL</td>
+		<td>𗥃</td>
+		<td><input></td>
+		<td>ljɨr¹</td>
+		<td>「四」前々回出てきた<span class='Tang'>𗤓</span>（ABA）とは別の字です。</td>
+	</tr><tr>
+		<td>MANX</td>
+		<td>𘓯</td>
+		<td><input></td>
+		<td>khjow¹</td>
+		<td>「与える」（A形<a href='#noto2' id='cxef2'><sup>2</sup></a>）</td>
+	</tr><tr>
+		<td>MMAL</td>
+		<td>𘞿</td>
+		<td><input></td>
+		<td>wjij¹</td>
+		<td>「中にある」</td>
+	</tr><tr>
+		<td>MBTX</td>
+		<td>𗹁</td>
+		<td><input></td>
+		<td>mjar¹</td>
+		<td>漢語「矛」の音訳</td>
+	</tr><tr>
+		<td>MBTX</td>
+		<td>𘞝</td>
+		<td><input></td>
+		<td>dzjwɨ¹</td>
+		<td>「讒言する」字首は M, 字身をあと3打で取ります。</td>
+	</tr><tr>
+		<td>NMLNM</td>
+		<td>𘆍</td>
+		<td><input></td>
+		<td>kạ²</td>
+		<td>「分かち合う」</td>
+	</tr><tr>
+		<td>ALMB</td>
+		<td>𗤋</td>
+		<td><input></td>
+		<td>mjij¹</td>
+		<td>「無い」否定存在動詞。この字の次字身（MSB）は様々な字の意味を反対にする「否定旁」として使われます。</td>
+	</tr><tr>
+		<td>TALX</td>
+		<td>𗒱</td>
+		<td><input></td>
+		<td>śjwi¹</td>
+		<td>「年齢」</td>
+	</tr><tr>
+		<td>NJSNN</td>
+		<td>𘒣</td>
+		<td><input></td>
+		<td>dạ²</td>
+		<td>「ことば」</td>
+	</tr><tr>
+		<td>XLLA</td>
+		<td>𘔼</td>
+		<td><input></td>
+		<td>nio̠w¹</td>
+		<td>格助詞「～故に」</td>
+	</tr><tr>
+		<td>TSXX</td>
+		<td>𗓱</td>
+		<td><input></td>
+		<td>tjij¹</td>
+		<td>「もしも」</td>
+</tr></tbody></table>
+</div>
+
+<hr>
+
+<p>注
+</p>
+<p><a href='#cxef01' id='noto01'>1</a> 「複雜な字が多い」と書きましたが、<a href='https://www.babelstone.co.uk/Blog/2009/08/how-complex-is-tangut.html' class='x'>How Complex is Tangut?</a> （2009）は漢字と西夏文字の画数分布が意外にも似通っていることを指摘しています。その上で同記事は、漢字では画数が少ない字ほど使用頻度が高く（たとえば一や大など）、画数が増えるにつれ頻度が下がっていく傾向があるのに対し、西夏文字では①最小画数は確かに多い（4画）、②どの画数の字も満遍なく出現する、という要因により、文章として見たときに画数が多い印象を与えるのであろう、と示唆しています。よってより正確には「複雜でない字の頻度が高くない」とでも言うべきでしょう。
+</p>
+<p><a href='#cxef2' id='noto2'>2</a> A形……よく使う他動詞20語強にはA形・B形という2つの語形があり、人称変化の際に使い分けがあります。多分A形から先に覚えるのがいいと思います。ちなみに「与える」のB形は<span class='Tang'>𘎾</span> khjɨj¹ です。
+</p>
+</main>
+
+<div class='margxeno'></div>
+<a class='allasupro' href='#'>
+	<img src='../../css/chevron-up.svg'>
+</a>
+<footer>
+	<nav class='centre'>
+		<a href='03.html'>前に戻る</a>&#x3000;
+		<a href='./'>篇目</a>&#x3000;
+		<a href='14.html'>次へ進む</a>
+	</nav>
+</footer>
+</body>
+</html>
