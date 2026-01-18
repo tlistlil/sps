@@ -5,12 +5,12 @@ p,li,td,.skatolo,footer nav.centre{max-width:800px;}
 	& tbody{border:none;}
 	& td:nth-child(1){visibility:hidden;}
 	& td:nth-child(2),input{font:48px 'Noto Serif','Noto Serif CJK JP','IPAex明朝','Tangut Yinchuan',serif;}
-	& input{width:3em;background:hsl(165,100%,20%);border:outset 3px;border-color:hsl(180,100%,50%);border-radius:8px;}
+	& input{width:3em;background:hsl(165,100%,20%);border:outset 3px hsl(180,100%,50%);border-radius:8px;}
 }
 span.Tang+input,
 span.Tang+br+input{
 	width:8em;margin-left:15px;
-	background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);
+	background:hsl(165,100%,20%);border:outset 3px hsl(180,100%,50%);border-radius:8px;
 	font:48px 'Noto Serif','Noto Serif CJK JP','IPAex明朝','Tangut Yinchuan',serif;
 }
 .testA{visibility:hidden;}
