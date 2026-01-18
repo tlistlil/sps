@@ -3,7 +3,13 @@ body{text-align:center;}
 header{display:none;}
 .md .hr main ol.decimal{list-style:none;}
 .sceno{
-	& button,& .butono{display:inline-block;margin:.5em;padding:.5em .8em;}
+	& a.butono,
+	& input[type='button'],
+	& button
+	{display:inline-block;height:3em;margin:.5em;padding:.5em 2em;
+	background:#f0a;color:#fff;border:outset 3px hsl(320,100%,50%);border-radius:8px;cursor:pointer;
+	font:16px 'Noto Serif','IPAex明朝',serif;}
+	& a.butono{padding-top:.5em;}
 	& ol.decimal{
 		list-style:none;
 		&>li{margin:.5em 0;}
@@ -17,7 +23,7 @@ header{display:none;}
 		background-clip:text;color:transparent;}
 	& #enir{
 		width:8em;max-width:100%;
-		background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);
+		background:hsl(165,100%,20%);border-color:hsl(180,100%,50%);border-radius:8px;color:#fff;
 		font:48px 'IPAex明朝','Tangut Yinchuan',serif;text-align:center;
 	}
 }
