@@ -12,15 +12,15 @@
 <body>
 <input id='enir'>
 <table><tr>
-<td>keydown:	</td><td id='kd'></td></tr><tr>
-<td>keypress:	</td><td id='kp'></td></tr><tr>
-<td>input:		</td><td id='ip'></td>
+<td>keydown e.key:	</td><td id='kd'></td></tr><tr>
+<td>keydown e.code:	</td><td id='kp'></td></tr><tr>
+<td>input e.data:		</td><td id='ip'></td>
 </tr></table>
 <script>
 const enir=byId('enir');
 aEL(enir,'keydown',	function(e){byId('kd').innerHTML=e.key;});
-aEL(enir,'keypress',function(e){byId('kp').innerHTML=e.key;});
-aEL(enir,'input',		function(e){byId('ip').innerHTML=e.data;});
+aEL(enir,'keydown',	function(e){byId('kp').innerHTML=e.code;});
+aEL(enir,'input',	function(e){byId('ip').innerHTML=e.data;});
 </script>
 </body>
 </html>
