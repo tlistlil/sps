@@ -1,6 +1,6 @@
 @charset "UTF-8";
 a.tocLego{font-family:'Noto Serif','Noto Serif CJK JP','IPAex明朝','Tangut Yinchuan',serif;}
-p,footer nav.centre{max-width:800px;}
+p,li,td,.skatolo,footer nav.centre{max-width:800px;}
 .ekz{
 	& tbody{border:none;}
 	& td:nth-child(1){visibility:hidden;}
