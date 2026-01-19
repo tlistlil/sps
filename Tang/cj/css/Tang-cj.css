@@ -10,7 +10,7 @@ p,li,td,.skatolo,footer nav.centre{max-width:800px;}
 span.Tang+input,
 span.Tang+br+input{
 	width:8em;margin-left:15px;
-	background:hsl(165,100%,20%);border:outset 3px hsl(180,100%,50%);border-radius:8px;
+	background:hsl(165,100%,20%);border:outset 3px hsl(180,100%,50%);border-radius:8px;color:#fff;
 	font:48px 'Noto Serif','Noto Serif CJK JP','IPAex明朝','Tangut Yinchuan',serif;
 }
 .testA{visibility:hidden;}
