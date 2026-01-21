@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='txg'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>西夏倉頡寫字器</title>
+	<link rel='icon' href='../ico/sps.ico'>
+	<link rel='stylesheet' href='../css/komuna.css'>
+	<style>
+	#enir{background:#f0a;border:outset 3px hsl(325,100%,50%);border-radius:8px;color:#fff;}
+	#kandj{
+		border:none;
+		& input[type='button'].kand{
+			display:inline-block;font:36px 'Tangut Yinchuan';width:1.6em;height:1.6em;
+			background:hsl(0,0%,20%);border-color:hsl(0,0%,40%);color:#fff;
+		}
+		& th{line-height:.8;overflow:hidden;}
+		& th,& td{padding:0;}
+	}
+	#montr{min-height:1.5em;}
+	</style>
+	<script charset='UTF-8' src='../js/komuna.js'></script>
+</head>
+<body>
+<h1 class='Tang'>𗼇𘝞𗛹𗵸𗏇𘅤𗾱</h1>
+<input id='enir' autofocus>
+<table frame='none' grid='none' id='kandj'><tr>
+	<td><input type='button' id='kand1' class='Tang kand'></td>
+	<td><input type='button' id='kand2' class='Tang kand'></td>
+	<td><input type='button' id='kand3' class='Tang kand'></td>
+	<td><input type='button' id='kand4' class='Tang kand'></td>
+	<td><input type='button' id='kand5' class='Tang kand'></td>
+</tr><tr>
+	<th>1</th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
+	<th>5</th>
+</tr></table>
+<p id='montr' class='Tang' contenteditable></p>
+<script src='kl.js'></script>
+</body>
+</html>
