@@ -24,11 +24,21 @@
 		}
 	}
 	#montr{min-height:1.5em;margin:10px;}
+	#cxiInfo{display:none;}
+	#cxiInfoEtikedo{padding:0 10px;background:hsl(0,0%,20%);border:solid 1px hsl(0,0%,40%);border-radius:5px;}
+	#info{display:none;}
+	#cxiInfo:checked~#info{
+	    display:block;max-width:300px;background:hsl(330,100%,20%);
+	    border:solid 1px hsl(330,50%,40%);border-radius:8px;
+	    & ul{list-style:none;}
+	    & kbd{padding:3px 8px;background:hsl(0,0%,20%);border:solid 1px hsl(0,0%,40%);border-radius:5px;}
+	}
 	</style>
 	<script charset='UTF-8' src='../js/komuna.js'></script>
 </head>
 <body>
 <h1 class='Tang'>𗼇𘝞𗛹𗵸𗏇𘅤𗾱</h1>
+
 <input id='enir' autofocus>
 <table frame='none' grid='none' id='kandj'><tr>
 	<td><input type='button' id='kand1' class='Tang kand'></td>
@@ -44,6 +54,15 @@
 	<th>5</th>
 </tr></table>
 <p id='montr' class='Tang' contenteditable></p>
+
+<input type='checkbox' id='cxiInfo'>
+<label for='cxiInfo' id='cxiInfoEtikedo'>?</label>
+<div id='info' lang='zh-TW'><ul>
+	<li><kbd>*</kbd> 萬用字元</li>
+	<li><kbd>1</kbd>-<kbd>5</kbd> 確定候補</li>
+	<li><kbd>Space</kbd> 確定候補1</li>
+</ul></div>
+
 <script src='kl.js'></script>
 </body>
 </html>
