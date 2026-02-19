@@ -33,7 +33,7 @@ aEL(q_a,'click',()=>{
 		let kaz=kazo=='сл'?['им','рд','да','тв'][Math.floor(Math.random()*4)]:kazo;
 		//問題と解答の生成
 		let prep=prep_rand(kaz);
-		qa_q=Math.floor(Math.E**(min+(Math.random()*(max-min))));
+		qa_q=Math.round(Math.E**(min+(Math.random()*(max-min))));
 		if(byId('rondigi').checked)qa_q=rondigi(qa_q);
 		qa_a=prep+no_ru(qa_q,kaz);
 		q_a.innerHTML='解答';
