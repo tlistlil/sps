@@ -62,6 +62,7 @@ table[grid='all']{& th,& td{border-style:solid;}}
 table[grid='rows']{& th,& td{border-style:solid none;}}
 table[grid='cols']{& th,& td{border-style:none solid;}}
 /*控制*/
+input,select{font-size:16px;}
 input[type='search'],
 input[type='button'],
 button,
