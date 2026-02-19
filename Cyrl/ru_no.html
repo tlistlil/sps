@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang='ja'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='theme-color' content='#000'>
+  <meta name='description' content='ロシア語の数詞の練習問題'>
+	<meta name='viewport'	content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>ロシア語數詞練習器</title>
+	<link rel='icon' href='../ico/sps.ico'>
+	<link rel='stylesheet' href='../css/komuna.css'>
+	<style>
+	h1{margin-top:0;}
+	details{background:hsl(90,25%,10%);border:ridge 3px hsl(270,25%,10%);border-radius:16px}
+	summary{background:hsl(90,75%,20%);border-radius:13px}
+	input[type='number']{
+		width:8em;
+		background:hsl(166,100%,20%);border:solid 1px hsl(180,100%,50%);
+		text-align:right;
+		&:invalid{background:hsl(0,100%,50%);}
+	}
+	select{border-radius:8px;}
+	footer{position:absolute;bottom;0:}
+	</style>
+	<script charset='utf-8' src='../js/komuna.js'></script>
+</head>
+<body>
+<header>
+	<h1>ロシア語數詞練習器</h1>
+</header>
+
+<main>
+<button id='q_a'>出題</button>
+<details>
+	<summary>設定</summary>
+	出題範圍
+	<input type='number' id='planko' value=1 max=999999999 min=1 inputmode='numeric' pattern='[1-9]\d*' required> -
+	<input type='number' id='plafono' value=99 max=999999999 min=1 inputmode='numeric' pattern='[1-9]\d*' required><br>
+	<input type='checkbox' id='rondigi' checked><label for='rondigi'>有效數字2桁</label><br>
+	格
+	<select id='kazoj'>
+		<option selected>主格</option>
+		<option>生格</option>
+		<option>與格</option>
+		<option>造格</option>
+		<option>ランダム</option>
+	</select>
+</details>
+<div id='demando' class='grande'></div>
+<div id='respondo' class='grande'></div>
+</main>
+
+<footer>
+	<nav class='centre'>
+		<a href='index.html'>戻る</a>
+	</nav>
+</footer>
+<script src='./js/ru_no.js'></script>
+</body>
+</html>
