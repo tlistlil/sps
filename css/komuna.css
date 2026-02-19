@@ -66,7 +66,7 @@ input,select{font-size:16px;}
 input[type='search'],
 input[type='button'],
 button,
-.butono{height:32px;border-radius:8px;}
+.butono{height:32px;border-radius:8px;font-size:16px;}
 a.butono{display:inline-block;padding:4px 6px;text-decoration:none;}
 a.allasupro{
 	position:fixed;bottom:15px;right:15px;height:55px;
@@ -75,11 +75,15 @@ a.allasupro{
 a.allasupro>img{width:35px;height:35px;}
 input[type='search']{
 	padding:1px 4px;
-	font:16px/1 'Gentium Plus','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
+	font:16px/1 'Noto Serif','教育部標準宋體','IPAex明朝','Ezra SIL','Noto Naskh Arabic',serif;
 }
-input[type='button'],.butono{
-	font:16px/1 '教育部標準宋體','Noto Serif CJK TC','Noto Serif Traditional Chinese',serif;
+input[type='button'],button,.butono{
+	font:16px/1 'Noto Serif','教育部標準宋體','Noto Serif CJK TC','Noto Serif Traditional Chinese',serif;
 }
+html[lang='ja']{
+	& input[type='button'],& button,& .butono{font:16px/1 'Noto Serif','IPAex明朝',serif;}
+}
+input[type='number']{font-family:'Noto Serif',serif;}
 /*其他*/
 .centre{text-align:center;}
 .dekstre{text-align:right;}
