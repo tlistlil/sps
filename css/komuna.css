@@ -64,6 +64,7 @@ table[grid='cols']{& th,& td{border-style:none solid;}}
 /*控制*/
 input[type='search'],
 input[type='button'],
+button,
 .butono{height:32px;border-radius:8px;}
 a.butono{display:inline-block;padding:4px 6px;text-decoration:none;}
 a.allasupro{
@@ -103,7 +104,11 @@ a:link.butono,a:visited.butono{color:#fff;}
 a.allasupro{background:hsl(0,0%,60%);border-color:hsl(325,100%,50%);}
 input[type='search'],
 input[type='button'],
+button,
 .butono{background:var(--UIRugx);color:#fff;border:outset 3px var(--UIRugxLim);}
+select{border:solid 1px hsl(180,100%,50%);
+	&,&>option{background:hsl(166,100%,20%);color:#fff;}
+}
 /*語言*/
 /*中日韓*/
 @font-face{/*4,115KB*/
