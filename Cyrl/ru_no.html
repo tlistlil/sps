@@ -11,15 +11,7 @@
 	<style>
 	body{height:95vh;}
 	h1{margin-top:0;}
-	details{background:hsl(90,25%,10%);border:ridge 3px hsl(270,25%,10%);border-radius:16px;}
-	summary{background:hsl(90,75%,20%);border-radius:13px;padding:0 10px;}
-	input[type='number']{
-		width:8em;
-		background:hsl(166,100%,20%);border:solid 1px hsl(180,100%,50%);border-radius:8px;color:#fff;
-		text-align:right;
-		&:invalid{background:hsl(0,100%,50%);}
-	}
-	select{border-radius:8px;}
+	#q_a{width:4em;height:3em;margin:0 0 .75em;}
 	footer{position:fixed;bottom:0;width:100%;}
 	</style>
 	<script charset='utf-8' src='../js/komuna.js'></script>
@@ -31,7 +23,7 @@
 
 <main>
 <button id='q_a'>出題</button>
-<details>
+<details class='config'>
 	<summary>設定</summary>
 	出題範圍
 	<input type='number' id='planko' value=1 max=999999999 min=1 inputmode='numeric' pattern='[1-9]\d*' required> -
