@@ -93,6 +93,11 @@ input[type='number']{font-family:'Noto Serif',serif;}
 hr{margin:32px 0;}
 strong{text-decoration:underline;}
 a:link,a:visited,u,strong{text-underline-offset:.4em;}
+details.config{
+	max-width:400px;line-height:3;
+	& input[type='number']{width:7em;text-align:right;border-radius:8px;}
+	& select{border-radius:8px;}
+}
 /*顏色*/
 ::-webkit-scrollbar-thumb{background:var(--UIVerd);}
 body,textarea{background:#000;color:var(--blk);}
