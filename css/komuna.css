@@ -95,6 +95,7 @@ strong{text-decoration:underline;}
 a:link,a:visited,u,strong{text-underline-offset:.4em;}
 details.config{
 	max-width:400px;line-height:3;
+	&>summary{padding:0 1em;}
 	& input[type='number']{width:7em;text-align:right;border-radius:8px;}
 	& select{border-radius:8px;}
 }
@@ -123,7 +124,9 @@ details.config{
 	background:hsl(90,25%,10%);border:ridge 3px hsl(275,25%,10%);border-radius:16px;
 	&>summary{background:hsl(90,75%,20%);border-radius:13px;}
 	& input[type='number']{
-		background:hsl(166,100%,20%);border:solid 1px hsl(180,100%,50%);
+		background:hsl(166,100%,20%);color:#fff;
+		border:solid 1px hsl(180,100%,50%);
+		&:invalid{background:hsl(0,100%,50%);}
 	}
 }
 /*語言*/
