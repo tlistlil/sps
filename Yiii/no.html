@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang='ja'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='theme-color' content='#000'>
+  <meta name='description' content='彝語の数詞の練習問題'>
+	<meta name='viewport'	content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>涼山彝語數詞練習器</title>
+	<link rel='icon' href='../ico/sps.ico'>
+	<link rel='stylesheet' href='../css/komuna.css'>
+	<style>
+	body{height:95vh;}
+	h1{margin-top:0;}
+	#q_a{width:5em;height:3em;margin:0 0 .75em;white-space:nowrap;}
+	#dem_res{padding:0 15px;}
+	footer{position:fixed;bottom:0;width:100%;}
+	</style>
+	<script charset='utf-8' src='../js/komuna.js'></script>
+</head>
+<body>
+<header>
+	<h1>涼山彝語數詞練習器</h1>
+</header>
+
+<main>
+<button id='q_a'>出題</button>
+<details class='config'>
+	<summary>設定</summary>
+	出題範圍
+	<input type='number' id='planko' value=1 max=99999 min=1 inputmode='numeric' pattern='[1-9]\d*' required> -
+	<input type='number' id='plafono' value=99 max=99999 min=1 inputmode='numeric' pattern='[1-9]\d*' required><br>
+	<input type='checkbox' id='rondigi' checked><label for='rondigi'>有效數字2桁</label><br>
+	量詞
+	<select id='clj'>
+		<option selected>なし</option>
+		<option>～人</option>
+		<option>～歳</option>
+		<option>～枚</option>
+		<option>ランダム</option>
+	</select>
+</details>
+<div id='dem_res'>
+	<div id='demando' class='grande'>&nbsp;</div>
+	<div id='respondoY' class='Yiii grande'>&nbsp;</div>
+	<div id='respondoP' class='grande'>&nbsp;</div>
+	<div id='respondoI'>&nbsp;</div>
+</div>
+<details id='reg_envolv'>
+	<summary>適用される規則</summary>
+	<ul id='reguloj'></ul>
+	<p>變調規則の全體については<a href='sandhi.html#數詞'>涼山彝語の變調</a>を參照。</p>
+</details>
+</main>
+
+<footer>
+	<nav class='centre'>
+		<a href='index.html'>戻る</a>
+	</nav>
+</footer>
+<script src='./js/ii.js'></script>
+<script src='./js/ii_no.js'></script>
+<noscript>出題のために Javascript を有效にしてください。</noscript>
+</body>
+</html>
