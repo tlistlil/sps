@@ -1,0 +1,103 @@
+//彝語共通函式庫
+let ii_py_Yiii=(str='')=>{//取敢ず數量詞關聯のみ 被參照: ii_no.js
+	str=str.replace(/cyp/gi,'ꋍ');
+	str=str.replace(/cyx/gi,'ꋋ');
+	str=str.replace(/zy/gi,'ꊪ');
+	str=str.replace(/nyip/gi,'ꑍ');
+	str=str.replace(/nyix/gi,'ꑋ');
+	str=str.replace(/suo/gi,'ꌕ');
+	str=str.replace(/ly/gi,'ꇖ');
+	str=str.replace(/nge/gi,'ꉬ');
+	str=str.replace(/fut/gi,'ꃘ');
+	str=str.replace(/shyp/gi,'ꏃ');
+	str=str.replace(/shyx/gi,'ꏁ');
+	str=str.replace(/hxit/gi,'ꉆ');
+	str=str.replace(/ggu/gi,'ꈬ');
+	str=str.replace(/cix/gi,'ꊯ');//順番に注意
+	str=str.replace(/ci/gi,'ꊰ');
+	str=str.replace(/zix/gi,'ꊎ');
+	str=str.replace(/zi/gi,'ꊏ');
+	str=str.replace(/hxax/gi,'ꉏ');
+	str=str.replace(/hxa/gi,'ꉐ');
+	str=str.replace(/durx/gi,'ꄘ');
+	str=str.replace(/dur/gi,'ꄙ');
+	str=str.replace(/vat/gi,'ꃪ');
+	str=str.replace(/si/gi,'ꌋ');
+	str=str.replace(/nip/gi,'ꆀ');
+	str=str.replace(/ma/gi,'ꂷ');
+	str=str.replace(/yuot/gi,'ꑹ');
+	str=str.replace(/yuop/gi,'ꑼ');
+	str=str.replace(/yuo/gi,'ꑻ');
+	str=str.replace(/bbut/gi,'ꁬ');
+	str=str.replace(/bbup/gi,'ꁯ');
+	str=str.replace(/bbur/gi,'ꁱ');
+	str=str.replace(/kut/gi,'ꈎ');
+	str=str.replace(/kur/gi,'ꈓ');
+	str=str.replace(/[ \u0027’]/g,'');//空白及分離符
+	str=str.replace(/,/g,'，');
+	str=str.replace(/\./g,'。');
+	return str;
+}
+let ii_py_IPA=(str='')=>{//拼音をIPAに變換 被參照: ii_no.js
+	str=str.toLowerCase();
+	str=str.replace(/ur/g,'ú');
+	str=str.replace(/yr/g,'ý');
+	str=str.replace(/(?<=[aeiouúyý])p/g,'˨˩');
+	str=str.replace(/(?<=[aeiouúyý])t/g,'˥');
+	str=str.replace(/(?<=[aeiouúyý])x/g,'˧˦');
+	//聲母
+	str=str.replace(/bb/g,'β');//濁音は清音より前
+	str=str.replace(/p/g,'pʰ');//次清音は清音より前
+	str=str.replace(/(?<!n)b/g,'p');
+	str=str.replace(/β/g,'b');
+	str=str.replace(/n(?=b)/g,'ᵐ');//nb
+	str=str.replace(/b(?=[uú])/g,'ʙ');//bbu(r), nbu(r)
+	str=str.replace(/h([mnl])/g,'$1\u0325');//hm, hn, hl
+	str=str.replace(/dd/g,'δ');
+	str=str.replace(/t/g,'tʰ');
+	str=str.replace(/(?<!n)d/g,'t');
+	str=str.replace(/δ/g,'d');
+	str=str.replace(/n(?=d)/g,'ⁿ');//nd
+	str=str.replace(/d(?=[uú])/g,'d͡ʙ');//ddu(r), ndu(r)
+	str=str.replace(/gg/g,'γ');
+	str=str.replace(/k/g,'kʰ');
+	str=str.replace(/ng/g,'ŋ');
+	str=str.replace(/(?<!m)g/g,'k');
+	str=str.replace(/γ/g,'g');
+	str=str.replace(/m(?=g)/g,'ᵑ');//mg / hx, h は後回し
+	str=str.replace(/w/g,'ɣ');
+	str=str.replace(/rr/g,'d͡ʐ');
+	str=str.replace(/ch/g,'t͡ʂʰ');
+	str=str.replace(/zh/g,'t͡ʂ');
+	str=str.replace(/nr/g,'ⁿd͡ʐ');
+	str=str.replace(/sh/g,'ʂ');
+	str=str.replace(/r/g,'ʐ');
+	str=str.replace(/zz/g,'ζ');
+	str=str.replace(/c/g,'t͡sʰ');
+	str=str.replace(/nz/g,'ⁿd͡z');
+	str=str.replace(/z/g,'t͡s');
+	str=str.replace(/ss/g,'z');
+	str=str.replace(/jj/g,'d͡ʑ');
+	str=str.replace(/nj/g,'ⁿd͡ʑ');
+	str=str.replace(/q/g,'t͡ɕʰ');
+	str=str.replace(/j/g,'t͡ɕ');
+	str=str.replace(/ny/g,'ɲ');
+	str=str.replace(/(?<!h)x/g,'ɕ');
+	str=str.replace(/y(?=[aeiouúyý])/g,'ʑ');
+	str=str.replace(/h(?!x)/g,'x');
+	str=str.replace(/hx/g,'h');
+	//韻母
+	str=str.replace(/a/g,'aˤ');
+	str=str.replace(/ie/g,'ɛˤ');
+	str=str.replace(/uo/g,'ɔˤ');
+	str=str.replace(/([ˤeiouúyý])(?![˨˧˥])/g,'$1˧');
+	str=str.replace(/e/g,'ɤ̝');
+	str=str.replace(/i/g,'e̝');
+	str=str.replace(/o/g,'o̝');
+	str=str.replace(/u/g,'β̩');
+	str=str.replace(/ú/g,'β̩ˤ');
+	str=str.replace(/y/g,'z̩');
+	str=str.replace(/ý/g,'z̩ˤ');
+	str=str.replace(/[\u0027’]/g,'');//分離符
+	return str;
+}
