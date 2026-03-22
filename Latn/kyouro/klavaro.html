@@ -64,7 +64,7 @@
 		<li><kbd>a</kbd><kbd>`</kbd> &rarr;&emsp;à&emsp;</li>
 		<li><kbd>a</kbd><kbd>'</kbd> &rarr;&emsp;á&emsp;</li>
 		<li>&nbsp;</li>
-		<li><kbd>\</kbd> エスケープ</li>
+		<li><kbd>\</kbd>或<kbd>&</kbd> エスケープ</li>
 		<li><kbd>\</kbd><kbd>A</kbd> &rarr;&emsp;A&emsp;IP境界 etc.</li>
 	</ol>
 </div>
@@ -89,9 +89,9 @@ aEL(cx,'input',function(e){
 	let fok=str.charAt(sS-2);//fokuso
 	let post=str.substring(sS);
 	switch(en){
-		case'i':if(fok=='\\'){fok=en;sS--;}else fok+='ı';break;
+		case'i':if(fok=='\\'||fok=='&'){fok=en;sS--;}else fok+='ı';break;
 		case'j':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'ı':fok='i';sS--;break;
 			case'e':fok='ė';sS--;break;
 			case'I':fok='İ';sS--;break;
@@ -99,7 +99,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0307';break;
 		}break;
 		case':':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='ä';sS--;break;
 			case'ı':fok='ï';sS--;break;
 			case'u':fok='ü';sS--;break;
@@ -113,7 +113,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0308';break;
 		}break;
 		case'=':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='ā';sS--;break;
 			case'ı':fok='ī';sS--;break;
 			case'u':fok='ū';sS--;break;
@@ -127,7 +127,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0304';break;
 		}break;
 		case'v':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='â';sS--;break;
 			case'ı':fok='î';sS--;break;
 			case'u':fok='û';sS--;break;
@@ -141,7 +141,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0302';break;
 		}break;
 		case'\'':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='á';sS--;break;
 			case'ı':fok='í';sS--;break;
 			case'u':fok='ú';sS--;break;
@@ -155,7 +155,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0301';break;
 		}break;
 		case'`':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='à';sS--;break;
 			case'ı':fok='ì';sS--;break;
 			case'u':fok='ù';sS--;break;
@@ -169,7 +169,7 @@ aEL(cx,'input',function(e){
 			default:fok+='\u0300';break;
 		}break;
 		case'V':switch(fok){
-			case'\\':fok=en;sS--;break;
+			case'\\':case'&':fok=en;sS--;break;
 			case'a':fok='ă';sS--;break;
 			case'ı':fok='ĭ';sS--;break;
 			case'u':fok='ŭ';sS--;break;
@@ -182,20 +182,20 @@ aEL(cx,'input',function(e){
 			case'O':fok='Ŏ';sS--;break;
 			default:fok+='\u0306';break;
 		}break;
-		case'x':if(fok=='\\'){fok=en;sS--;}else{fok+='xtu';sS+=2;}break;
-		case'L':if(fok=='\\'){fok=en;sS--;}else{fok+='—';}break;//U+2014
-		case'f':if(fok=='\\'){fok=en;sS--;}else{fok+='ˈ';}break;
-		case'c':if(fok=='\\'){fok=en;sS--;}else{fok+='ˌ';}break;
-		case'F':if(fok=='\\'){fok=en;sS--;}else{fok+='ʻ';}break;
-		case'C':if(fok=='\\'){fok=en;sS--;}else{fok+='’';}break;
-		case'l':if(fok=='\\'){fok=en;sS--;}else{fok+='·';}break;
-		case'q':if(fok=='\\'){fok=en;sS--;}else{fok+='¿';}break;
-		case'A':if(fok=='\\'){fok=en;sS--;}else{fok+='ä';}break;
-		case'I':if(fok=='\\'){fok=en;sS--;}else{fok+='ï';}break;
-		case'U':if(fok=='\\'){fok=en;sS--;}else{fok+='ü';}break;
-		case'E':if(fok=='\\'){fok=en;sS--;}else{fok+='ë';}break;
-		case'O':if(fok=='\\'){fok=en;sS--;}else{fok+='ö';}break;
-		default:if(fok=='\\'){fok=en;sS--;}else{fok+=en;}break;
+		case'x':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='xtu';sS+=2;}break;
+		case'L':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='—';}break;//U+2014
+		case'f':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ˈ';}break;
+		case'c':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ˌ';}break;
+		case'F':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ʻ';}break;
+		case'C':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='’';}break;
+		case'l':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='·';}break;
+		case'q':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='¿';}break;
+		case'A':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ä';}break;
+		case'I':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ï';}break;
+		case'U':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ü';}break;
+		case'E':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ë';}break;
+		case'O':if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+='ö';}break;
+		default:if(fok=='\\'||fok=='&'){fok=en;sS--;}else{fok+=en;}break;
 	}
 	cx.value='';//非正規軟鍵盤支持
 	cx.value=ante+fok+post;
