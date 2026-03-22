@@ -26,7 +26,7 @@
 		&>#cxiInfo:checked~#info{display:inline-flex;}
 	}
 	@media screen and (width >= 500px){
-		#infoWrap>#info{width:24em;height:22em;}
+		#infoWrap>#info{width:26em;height:22em;}
 	}
 	@media screen and (width >= 650px){
 		main{display:grid;grid:1fr / 1fr auto;max-width:1200px;}
@@ -195,6 +195,7 @@ aEL(cx,'input',function(e){
 		case'O':if(fok=='\\'){fok=en;sS--;}else{fok+='ö';}break;
 		default:if(fok=='\\'){fok=en;sS--;}else{fok+=en;}break;
 	}
+	cx.value='';//非正規軟鍵盤支持
 	cx.value=ante+fok+post;
 	cx.setSelectionRange(sS,sS);
 });
