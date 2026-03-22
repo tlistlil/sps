@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<meta name='description' content='日文教育羅馬字輸入支持, клавиатура японской педагогической латиницы'>
+	<title>Kyôuïkuro—ˈmazı ìnnputtoˈmesoddo</title>
+	<link rel='icon' href='../../ico/sps.ico'>
+	<link rel='stylesheet' href='../../css/komuna.css'>
+	<style>
+	#cx{width:100%;height:100%;padding:1em;resize:none;
+		border:none;outline:none;font:1.25em 'Gentium Plus','Noto Serif',serif;}
+	#infoWrap{text-align:right;
+		&>#cxiInfo{display:none;}
+		&>#cxiInfoLabel{display:inline-block;width:2em;height:2em;
+			border:solid 1px #888;border-radius:8px;background:#222;
+			text-align:center;}
+		&>#info{display:none;}
+		&>#cxiInfo:checked~#info{
+			display:inline-flex;flex-flow:column wrap;width:15em;
+			border:solid 1px hsl(330,50%,40%);border-radius:8px;padding:5px;
+			background:hsl(330,100%,20%);text-align:left;
+			& kbd{display:inline-block;margin:0 2px;padding:0 5px;text-align:center;
+				border:solid 1px hsl(0,0%,85%);border-radius:8px;background:#222;}
+		}
+	}
+	@media screen and (width >= 500px){
+		#info{width:24em;;height:22em;}
+	}
+	@media screen and (width >= 700px){
+		main{display:grid;grid:1fr / 1fr auto;}
+	}
+	</style>
+	<script charset='UTF-8' src='../../js/komuna.js'></script>
+</head>
+<body>
+
+<main>
+<textarea id='cx' autofocus></textarea>
+<div id='infoWrap'>
+	<input id='cxiInfo' type='checkbox'>
+	<label id='cxiInfoLabel' for='cxiInfo'>?</label>
+	<br>
+	<ol id='info'>
+		<li><kbd>i</kbd> &rarr;&emsp;ı</li>
+		<li><kbd>i</kbd><kbd>j</kbd> &rarr;&emsp;i&emsp;母音幹動詞</li>
+		<li><kbd>A</kbd>或<kbd>a</kbd><kbd>:</kbd>&rarr;&emsp;ä</li>
+		<li><kbd>q</kbd> &rarr;&emsp;¿&emsp;文末上昇</li>
+		<li><kbd>x</kbd> &rarr;&emsp;xtu&emsp;促音</li>
+		<li><kbd>L</kbd> &rarr;&emsp;—&emsp;長音符</li>
+		<li><kbd>f</kbd> &rarr;&emsp;ˈ&emsp;強勢</li>
+		<li><kbd>c</kbd> &rarr;&emsp;ˌ&emsp;條件強勢</li>
+		<li><kbd>F</kbd> &rarr;&emsp;ʻ&emsp;境界下降</li>
+		<li><kbd>C</kbd> &rarr;&emsp;’&emsp;潛性境界下降</li>
+		<li><kbd>l</kbd> &rarr;&emsp;·&emsp;屈折記號</li>
+		<li><kbd>a</kbd><kbd>=</kbd> &rarr;&emsp;ā&emsp;非綴長音</li>
+		<li>【$-圏點】</li>
+		<li><kbd>a</kbd><kbd>v</kbd> &rarr;&emsp;â&emsp;</li>
+		<li><kbd>a</kbd><kbd>V</kbd> &rarr;&emsp;ă&emsp;</li>
+		<li><kbd>a</kbd><kbd>`</kbd> &rarr;&emsp;à&emsp;</li>
+		<li><kbd>a</kbd><kbd>'</kbd> &rarr;&emsp;á&emsp;</li>
+		<li>&nbsp;</li>
+		<li><kbd>\</kbd> エスケープ</li>
+		<li><kbd>\</kbd><kbd>A</kbd> &rarr;&emsp;A&emsp;IP境界 etc.</li>
+	</ol>
+</div>
+</main>
+
+<footer>
+	<nav class='centre'>
+		<a href='./'>moˈˈdor·u</a>
+	</nav>
+</footer>
+
+<script>
+const cx=byId('cx');
+aEL(cx,'input',function(e){
+	let en=e.data;//eniro: 輸入された文字	
+	if(!en)return;
+	if(!en.match(/[ -~]/))return;//日文IMEで選擇範圍がバグる
+	if(1<en.length)return;//コピーペースト時
+	let str=cx.value;
+	let sS=cx.selectionStart;//1進んだ後の値
+	let ante=str.substring(0,sS-2);
+	let fok=str.charAt(sS-2);//fokuso
+	let post=str.substring(sS);
+	switch(en){
+		case'i':if(fok=='\\'){fok=en;sS--;}else fok+='ı';break;
+		case'j':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'ı':fok='i';sS--;break;
+			case'e':fok='ė';sS--;break;
+			case'I':fok='İ';sS--;break;
+			case'E':fok='Ė';sS--;break;
+			default:fok+='\u0307';break;
+		}break;
+		case':':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='ä';sS--;break;
+			case'ı':fok='ï';sS--;break;
+			case'u':fok='ü';sS--;break;
+			case'e':fok='ë';sS--;break;
+			case'o':fok='ö';sS--;break;
+			case'A':fok='Ä';sS--;break;
+			case'I':fok='Ï';sS--;break;
+			case'U':fok='Ü';sS--;break;
+			case'E':fok='Ë';sS--;break;
+			case'O':fok='Ö';sS--;break;
+			default:fok+='\u0308';break;
+		}break;
+		case'=':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='ā';sS--;break;
+			case'ı':fok='ī';sS--;break;
+			case'u':fok='ū';sS--;break;
+			case'e':fok='ē';sS--;break;
+			case'o':fok='ō';sS--;break;
+			case'A':fok='Ā';sS--;break;
+			case'I':fok='Ī';sS--;break;
+			case'U':fok='Ū';sS--;break;
+			case'E':fok='Ē';sS--;break;
+			case'O':fok='Ō';sS--;break;
+			default:fok+='\u0304';break;
+		}break;
+		case'v':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='â';sS--;break;
+			case'ı':fok='î';sS--;break;
+			case'u':fok='û';sS--;break;
+			case'e':fok='ê';sS--;break;
+			case'o':fok='ô';sS--;break;
+			case'A':fok='Â';sS--;break;
+			case'I':fok='Î';sS--;break;
+			case'U':fok='Û';sS--;break;
+			case'E':fok='Ê';sS--;break;
+			case'O':fok='Ô';sS--;break;
+			default:fok+='\u0302';break;
+		}break;
+		case'\'':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='á';sS--;break;
+			case'ı':fok='í';sS--;break;
+			case'u':fok='ú';sS--;break;
+			case'e':fok='é';sS--;break;
+			case'o':fok='ó';sS--;break;
+			case'A':fok='Á';sS--;break;
+			case'I':fok='Í';sS--;break;
+			case'U':fok='Ú';sS--;break;
+			case'E':fok='É';sS--;break;
+			case'O':fok='Ó';sS--;break;
+			default:fok+='\u0301';break;
+		}break;
+		case'`':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='à';sS--;break;
+			case'ı':fok='ì';sS--;break;
+			case'u':fok='ù';sS--;break;
+			case'e':fok='è';sS--;break;
+			case'o':fok='ò';sS--;break;
+			case'A':fok='À';sS--;break;
+			case'I':fok='Ì';sS--;break;
+			case'U':fok='Ù';sS--;break;
+			case'E':fok='È';sS--;break;
+			case'O':fok='Ò';sS--;break;
+			default:fok+='\u0300';break;
+		}break;
+		case'V':switch(fok){
+			case'\\':fok=en;sS--;break;
+			case'a':fok='ă';sS--;break;
+			case'ı':fok='ĭ';sS--;break;
+			case'u':fok='ŭ';sS--;break;
+			case'e':fok='ĕ';sS--;break;
+			case'o':fok='ŏ';sS--;break;
+			case'A':fok='Ă';sS--;break;
+			case'I':fok='Ĭ';sS--;break;
+			case'U':fok='Ŭ';sS--;break;
+			case'E':fok='Ĕ';sS--;break;
+			case'O':fok='Ŏ';sS--;break;
+			default:fok+='\u0306';break;
+		}break;
+		case'x':if(fok=='\\'){fok=en;sS--;}else{fok+='xtu';sS+=2;}break;
+		case'L':if(fok=='\\'){fok=en;sS--;}else{fok+='—';}break;//U+2014
+		case'f':if(fok=='\\'){fok=en;sS--;}else{fok+='ˈ';}break;
+		case'c':if(fok=='\\'){fok=en;sS--;}else{fok+='ˌ';}break;
+		case'F':if(fok=='\\'){fok=en;sS--;}else{fok+='ʻ';}break;
+		case'C':if(fok=='\\'){fok=en;sS--;}else{fok+='’';}break;
+		case'l':if(fok=='\\'){fok=en;sS--;}else{fok+='·';}break;
+		case'q':if(fok=='\\'){fok=en;sS--;}else{fok+='¿';}break;
+		case'A':if(fok=='\\'){fok=en;sS--;}else{fok+='ä';}break;
+		case'I':if(fok=='\\'){fok=en;sS--;}else{fok+='ï';}break;
+		case'U':if(fok=='\\'){fok=en;sS--;}else{fok+='ü';}break;
+		case'E':if(fok=='\\'){fok=en;sS--;}else{fok+='ë';}break;
+		case'O':if(fok=='\\'){fok=en;sS--;}else{fok+='ö';}break;
+		default:if(fok=='\\'){fok=en;sS--;}else{fok+=en;}break;
+	}
+	cx.value=ante+fok+post;
+	cx.setSelectionRange(sS,sS);
+});
+aEL(byId('cxiInfoLabel'),'click',function(){cx.focus();});
+</script>
+<noscript>Vi bezonas ebligi JavaScript-on por uzi ĉi tiun klavaron.</noscript>
+
+</body>
+</html>
