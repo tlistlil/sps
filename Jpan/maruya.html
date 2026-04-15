@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang='ja'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='theme-color' content='#000'>
+	<meta name='viewport'	content='width=device-width,initial-scale=1.0,minimum-scale=1.0'>
+	<title>丸谷變換</title>
+	<link rel='icon' href='../ico/sps.ico'>
+	<link rel='stylesheet' href='../css/komuna.css'>
+	<style>
+	h1{display:inline;margin:0 0 1.5em;padding:0;font-size:18px;}
+	#legi{position:fixed;right:2em;bottom:3em;z-index:2;}
+	#fiksa{position:fixed;right:0;height:95vh;
+		background:hsl(0,0%,0%);z-index:1;}
+	nav{margin:.5em 1.3em 0 .8em;line-height:2.5;font-size:14px;}
+	nav>input,select,textarea{writing-mode:vertical-rl;margin:0;
+		transform:unset;transform-origin:unset;}
+	nav>input[type='button'],nav>select,nav>span.butono{padding:.3em 0;margin:5px 0;}
+	nav>input[type='checkbox']{cursor:pointer;}
+	nav>label{position:relative;right:1px;margin:2px 0;cursor:pointer;}
+	#enirEnv{height:100%;width:10em;overflow:scroll;
+		border:1px solid hsl(0,0%,85%);}
+	textarea#enir{height:85vh;width:10em;padding:.3em 0;resize:none;}
+	p#enir{min-width:100%;width:10em;padding:.5em 0;
+		&,& *{background:unset!important;color:unset!important;}
+	}
+	#elig{height:84vh;margin:.3em 17em 0 0;white-space:pre-wrap;}
+	#enir,#elig{font: 18px/1.8 "IPAex明朝","Noto Serif","Noto Naskh",serif;}
+	body{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:1px;}
+	.GCL{margin:3px 0;text-orientation:sideways;letter-spacing:2px;}
+	</style>
+	<script charset='utf-8' src='../js/komuna.js'></script>
+</head>
+<body>
+
+<input type=button id=legi value='閲讀'>
+<div id='fiksa'>
+	<nav><h1>丸谷變換</h1><input type=button class=vrd id=kvButono value='實行'><input type=button class=vrd id=visxi value='清除'>
+		<input type='checkbox' id='brOpt' name='brOpt' checked><label for='brOpt'>除空行</label>		
+		<input type='checkbox' id='malspace' name='malspace' checked><label for='malspace'>除全形間半形空白</label><br>
+		<input type='checkbox' id='duone' name='duone' checked><label for='duone'>矯全形英數為半形</label>		
+		<input type='checkbox' id='malduone' name='malduone'><label for='malduone'>矯半形標點為全形</label>
+		<span id=kontar class=Latn></span>
+	</nav>
+	<textarea id='enir' autofocus placeholder='輸入文章'></textarea>
+</div>
+<pre id='elig' contenteditable></pre>
+
+<script src='./js/Maruyaruma.js'></script>
+<script>
+const fiksa	=ById('fiksa');
+const enir	=ById('enir');
+const elig	=ById('elig');
+const kvButono	=ById('kvButono');
+const brOpt		=ById('brOpt');
+const duone		=ById('duone');
+const malduone	=ById('malduone');
+const tiparo	=ById('tiparo');
+const kontar	=ById('kontar');
+const legi		=ById('legi');
+let kv=()=>{//變換
+	let str=kv_dkstr(enir.value);
+	kontar.textContent=str.replace(/[\n 　]/g,'').length;
+	//Latn-Armn (U+058f) (除 + &pm; &times; &div;)
+	str=str.replace(/([ -*,-°²-ÖØ-öø-֏]+)/gu,"<span class='GCL'>$1</span>");
+	elig.innerHTML=str;
+}
+let visxi=()=>{enir.value=elig.innerHTML='';enir.focus();}
+let elekti=(el)=>{//輸出の全體を選擇
+	let gamo= document.createRange();
+	gamo.selectNodeContents(el);
+	let elek=window.getSelection();
+	elek.removeAllRanges();
+	elek.addRange(gamo);
+}
+let elektiElig=()=>elekti(elig);
+aEL(enir,		'keyup',kv);
+aEL(kvButono,	'click',kv);
+aEL(brOpt,		'change',kv);
+aEL(duone,		'change',kv);
+aEL(malduone,	'change',kv);
+aEL(ById('visxi'),'click',visxi);
+aEL(elig,		'focus',elektiElig);
+legi.addEventListener('click',function(){
+	let disp,btnVal,mrg;
+	if(legi.value=='閲讀'){disp='none';btnVal='收讀';mrg='0';}
+	else{disp='block';btnVal='閲讀';mrg='17em';}
+	fiksa.style.display
+		=byId('allaejmapo').style.display
+		=byId('turniLaPagxon').style.display
+		=byId('allasupro').style.display
+		=disp;
+	legi.value=btnVal;
+	legi.blur();
+	elig.style.marginRight=mrg;
+},false);
+</script>
+</body>
+</html>
