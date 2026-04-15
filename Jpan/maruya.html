@@ -26,7 +26,7 @@
 	}
 	#elig{height:84vh;margin:.3em 17em 0 0;white-space:pre-wrap;}
 	#enir,#elig{font: 18px/1.8 "IPAex明朝","Noto Serif","Noto Naskh",serif;}
-	body,input,textarea#enir{-webkit-writing-mode:vertical-rl;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:1px;}
+	body,input,textarea#enir{-webkit-writing-mode:vertical-rl!important;writing-mode:vertical-rl!important;text-orientation:upright;letter-spacing:1px;}
 	.GCL{margin:3px 0;text-orientation:sideways;letter-spacing:2px;}
 	</style>
 	<script charset='utf-8' src='../js/komuna.js'></script>
@@ -40,7 +40,7 @@
 		<input type='checkbox' id='malspace' name='malspace' checked><label for='malspace'>除全形間半形空白</label><br>
 		<input type='checkbox' id='duone' name='duone' checked><label for='duone'>矯全形英數為半形</label>		
 		<input type='checkbox' id='malduone' name='malduone'><label for='malduone'>矯半形標點為全形</label>
-		<span id=kontar class=Latn></span>
+		<span id=kontar class=GCL></span>
 	</nav>
 	<textarea id='enir' autofocus placeholder='輸入文章'></textarea>
 </div>
