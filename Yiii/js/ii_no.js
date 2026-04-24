@@ -57,10 +57,13 @@ let rondigi=(n=1)=>{//丸める
 }
 let ii_no_reguloj=(Y='')=>{//適用規則清單：彝文を輸入
 	let html='';
-	if(Y.match(/[ꊯꊎꉏꄘ]/))html+='<li>中平調の十・百・千に中平調の三・四・五・九が續くとき、前者が次高調になる</li>';
 	if(Y.match(/[ꋋꑋꏁ]/))html+='<li>中平調の十・百・千に低調の一・二・七が續くとき、後者が次高調になる</li>';
-	if(Y.match(/ꊯꊪ/))html+='<li>十一は cix zy になる</li>';
+	if(Y.match(/ꊪ/))html+='<li>十一は cix zy になる</li>';
 	if(Y.match(/[ꊏꊎ]/))html+='<li>二に十が續くとき、十の頭子音が無氣音化する</li>';
+	if(Y.match(/[ꊯꊎ]/))html+='<li>直前が次高調以外の中平調の十に中平調の三・四・五・九が續くとき、十が次高調になる</li>';
+	if(Y.match(/[ꊰꊏ][ꌕꇖꉬꈬ]/))html+='<li>直前が次高調である中平調の十に中平調の三・四・五・九が續くとき、変調は起きない</li>';
+	if(Y.match(/[ꉏꄘ]/))html+='<li>直前が高調以外の中平調の百・千に中平調の三・四・五・九が續くとき、百・千が次高調になる</li>';
+	if(Y.match(/[ꉐꄙ][ꌕꇖꉬꈬ]/))html+='<li>直前が高調である中平調の百・千に中平調の三・四・五・九が續くとき、変調は起きない</li>';
 	if(Y.match(/[ꑻꑼꑹꁬꁯꁱ]/))html+='<li>數高量低、數低量高、數平量平</li>';
 	if(Y.match(/[ꈎꈓ]/))html+='<li>不規則量詞：數平量高、數非平量平</li>';
 	return html;
@@ -68,10 +71,11 @@ let ii_no_reguloj=(Y='')=>{//適用規則清單：彝文を輸入
 //數字を綴字に
 let no_ii_py=(n=1,kl='')=>{
 	let str=no_Hani(n)+kl;
-	str=str.replace(/([十百千])([三四五九])/g,'$1x$2');
-	str=str.replace(/(?<![二三四五六七八九])十一/g,' cix zy');//百以上の位にはよらないと假定
+	str=str.replace(/(?<![一二三四五六七八九])十一/g,' cix zy');//百以上の位にはよらないと假定
 	str=str.replace(/([十百千])([一二七])/g,'$1$2x');
-	str=str.replace(/^([一二])人/,'$1 ma');//11, 12… 101, 102… に不適用
+	str=str.replace(/(?<!x)十([三四五九])/g,'十x$1');
+	str=str.replace(/(?<![六八x])([百千])([三四五九])/g,'$1x$2');
+	str=str.replace(/^([一二])人/,'$1 ma');//11, 12… 101, 102… に不適用と假定
 	str=str.replace(/萬/,' vat');
 	str=str.replace(/千/,' dur');
 	str=str.replace(/百/,' hxa');
@@ -112,7 +116,7 @@ let no_Hani=(n=1)=>{//數を漢數字に
 		if(cif)str+=no_Hani_c[cif]+no_Hani_p[lon-i];
 		else str+='零';
 	}
-	str=str.replace(/一十/,'十');
+	str=str.replace(/(?<!百)一十/,'十');
 	str=str.replace(/零{2,}/g,'零');//空位の正規化
 	str=str.replace(/零$/,'');//空位の正規化
 	return str;
