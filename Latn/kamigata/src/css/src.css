@@ -13,7 +13,7 @@ h1{margin:0;padding-right:75px;}
 }
 div.formo{
 	display:flex;flex-wrap:wrap;
-	& select{font-size:12px;}
+	& select{min-height:30px;font-size:12px;}
 	& p{margin:0;}
 }
 div#montri{
