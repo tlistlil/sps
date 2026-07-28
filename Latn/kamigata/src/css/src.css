@@ -26,7 +26,7 @@ div#montri{
 		& td:nth-child(-n+3){padding:0 10px;}
 		& td:nth-child(4){text-align:center;}
 		& button.det{
-			background:hsl(330,100%,15%);border-color:hsl(335,100%,25%);
+			height:26px;background:hsl(330,100%,15%);border-color:hsl(335,100%,25%);
 			font-size:12px;
 		}
 		& a.wtligo{
@@ -43,7 +43,7 @@ div#detalvolvo{
 	scrollbar-width:none;
 	display:none;
 	& p{margin:0;}
-	& h2.ja{margin:0;border:none;background:hsl(240,10%,10%);text-align:center;font-size:24px;}
+	& h2.ja{margin:0;border:none;background:hsl(240,10%,10%);text-align:center;font-weight:700;font-size:24px;}
 	& table{
 		width:100%;overflow:scroll;
 		& caption{width:95vw;max-width:500px;background:hsl(30,100%,15%);}
