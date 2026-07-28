@@ -7,7 +7,7 @@ h1{margin:0;padding-right:75px;}
 	&>#lingmenu{display:none;width:200px;text-align:left;
 		margin:-12px 0 0;border-radius:5px;padding:12px;background:hsl(0,0%,60%);
 		list-style:none;
-		&>li>a{display:block;color:#fff;text-decoration:none;}
+		&>li>a{display:block;color:hsl(300,100%,15%);text-decoration:none;}
 	}
 	&:hover{&>#lingmenu{display:block;}}
 }
