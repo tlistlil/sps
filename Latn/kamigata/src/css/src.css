@@ -42,10 +42,12 @@ div#detalvolvo{
 	overflow:scroll;background:hsl(240,20%,10%);
 	scrollbar-width:none;
 	display:none;
-	& h2.ja{margin:0;background:hsl(240,10%,10%);text-align:center;font-size:24px;}
+	& p{margin:0;}
+	& h2.ja{margin:0;border:none;background:hsl(240,10%,10%);text-align:center;font-size:24px;}
 	& table{
 		width:100%;overflow:scroll;
-		& caption{background:hsl(30,100%,15%);}
+		& caption{width:95vw;max-width:500px;background:hsl(30,100%,15%);}
+		& tbody{border:none;}
 		& th{text-align:left;white-space:nowrap;vertical-align:top;}
 	}
 }
