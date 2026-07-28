@@ -16,6 +16,7 @@ div.formo{
 	& select{min-height:30px;font-size:12px;}
 	& p{margin:0;}
 }
+hr{margin:0;}
 div#montri{
 	width:100%;
 	& table{
