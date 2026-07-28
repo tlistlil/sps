@@ -1,12 +1,11 @@
 @charset "UTF-8";
-body{min-height:95vh;}
 h1{margin:0;padding-right:75px;}
 #lingj{
 	position:absolute;top:15px;right:15px;z-index:10;text-align:right;
 	font-size:25px;
-	&>img{width:25px;height:25px;border-radius:5px;padding:15px;background:hsl(0,0%,20%);}
+	&>img{width:25px;height:25px;border:solid 15px hsl(0,0%,40%);border-radius:5px;background:hsl(0,0%,40%);}
 	&>#lingmenu{display:none;width:200px;text-align:left;
-		border-radius:5px;padding:12px;background:hsl(0,0%,20%);
+		margin:0;border-radius:5px;padding:12px;background:hsl(0,0%,40%);
 		list-style:none;
 		&>li>a{display:block;color:#fff;text-decoration:none;}
 	}
@@ -15,6 +14,7 @@ h1{margin:0;padding-right:75px;}
 div.formo{
 	display:flex;flex-wrap:wrap;
 	& select{font-size:12px;}
+	& p{margin:0;}
 }
 div#montri{
 	width:100%;
@@ -49,4 +49,4 @@ div#detalvolvo{
 		& th{text-align:left;white-space:nowrap;vertical-align:top;}
 	}
 }
-footer{position:fixed;bottom:0;}
+footer{position:fixed;bottom:10px;left:10px;}
