@@ -30,8 +30,11 @@
 
 <textarea id=montri autofocus></textarea>
 <nav>
-	<input type='checkbox' id='kunmeti' checked>
-	<label for='kunmeti'>完成型를 使用함</label> ／
+	<select id='eligOpt'>
+		<option>첫가끝</option>
+		<option selected>完成型 (Unicode)</option>
+		<option>完成型 (漢陽PUA)</option>
+	</select>
 	<a href='kl_not.html'>指南</a>
 </nav>
 
@@ -126,10 +129,7 @@ let eniri=(k)=>{
 	let prepre=pre.substr(0,pos);//カーソルより前の部分
 	let antaw=prepre.substr(pos-1,1);//直前の文字
 	let prepost=pre.substr(pos);//カーソルより後の部分
-	let cxiKunmeti=ById('kunmeti').checked;
 	if(antaw=="\u200c"){//音節頭なので入力字を單純追加
-		//音節の入力が終はったので單字變換
-		if(ById('kunmeti').checked)prepre=kunmeti(prepre);
 		prepre=prepre.replace(/\u200c/g,'');//不要になった零幅非結合子を削除
 		novkar=V_V(novkar,1)//母音字は互換用字母に變換
 		pos=prepre.length;
@@ -141,7 +141,6 @@ let eniri=(k)=>{
 			pos--;
 		}
 	}
-	//if(prepost)prepost="\u200c"+prepost;
 	pos+=novkar.length;
 	montri.value=prepre+novkar+prepost;
 	montri.setSelectionRange(pos,pos);//カーソル位置變更
@@ -606,7 +605,9 @@ let spaco=()=>{
 	let pos=montri.selectionStart;
 	let prepre=pre.substring(0,pos);
 	//音節の入力が終はったので單字變換
-	if(ById('kunmeti').checked)prepre=kunmeti(prepre);
+	let eligOpt=ById('eligOpt').selectedIndex;
+	if(eligOpt)prepre=kunmeti(prepre);
+	if(eligOpt==2)prepre=chkgg_hypua(prepre);
 	prepre=prepre.replace(/\u200c/g,'');//不要になった零幅非結合子を削除
 	montri.value=prepre+str+pre.substr(pos);
 	pos=prepre.length+1;
@@ -632,9 +633,6 @@ let klavaronSxangxi=(kl)=>{
 	let kl30=ById('kl30');kl30.classList.remove('hejma');
 	let kl32=ById('kl32');kl32.classList.remove('hejma');
 	let kl33=ById('kl33');kl33.classList.remove('hejma');
-//G-Kがホームポジション
-//	kl30.classList.add('hejma');kl33.classList.add('hejma');break;
-//F-Jがホームポジション
 	kl29.classList.add('hejma');kl32.classList.add('hejma');//break;
 }
 klavaronSxangxi(klavoj);
